@@ -19,13 +19,13 @@ const HeroSection = () => {
           </div>
 
           <h1 className="mb-6 font-display text-4xl font-bold text-primary-foreground md:text-5xl lg:text-6xl animate-fade-in">
-            Master NEET PG with
-            <span className="block text-accent">Comprehensive Notes</span>
+            DH-KUSMS
+            <span className="block text-accent">Medico Essentials</span>
           </h1>
 
           <p className="mb-8 text-lg text-primary-foreground/80 md:text-xl animate-fade-in" style={{ animationDelay: "0.1s" }}>
-            Handcrafted study materials covering all 19 subjects. 
-            Select the notes you need and start your journey to success.
+            Premium NEET PG notes from top coaching institutes. 
+            Choose your coaching and select the subjects you need.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-6 animate-fade-in" style={{ animationDelay: "0.2s" }}>

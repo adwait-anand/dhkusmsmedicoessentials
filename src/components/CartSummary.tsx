@@ -1,4 +1,4 @@
-import { Subject } from "@/data/subjects";
+import { Subject } from "@/data/coachings";
 import { ShoppingBag, Sparkles, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
