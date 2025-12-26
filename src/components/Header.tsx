@@ -14,10 +14,10 @@ const Header = ({ cartCount, totalPrice }: HeaderProps) => {
             <BookOpen className="h-5 w-5" />
           </div>
           <div>
-            <h1 className="font-display text-xl font-semibold text-foreground">
-              MedNotes
+            <h1 className="font-display text-lg font-semibold text-foreground leading-tight">
+              DH-KUSMS
             </h1>
-            <p className="text-xs text-muted-foreground">NEET PG Preparation</p>
+            <p className="text-xs text-muted-foreground">Medico Essentials</p>
           </div>
         </div>
 

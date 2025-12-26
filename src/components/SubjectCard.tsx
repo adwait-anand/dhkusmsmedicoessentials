@@ -1,6 +1,5 @@
 import { Checkbox } from "@/components/ui/checkbox";
-import { Subject } from "@/data/subjects";
-import { FileText } from "lucide-react";
+import { Subject } from "@/data/coachings";
 
 interface SubjectCardProps {
   subject: Subject;
@@ -35,10 +34,6 @@ const SubjectCard = ({ subject, isSelected, onToggle, index }: SubjectCardProps)
               <h3 className="font-display text-lg font-semibold text-card-foreground">
                 {subject.name}
               </h3>
-              <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                <FileText className="h-3 w-3" />
-                <span>{subject.pages} pages</span>
-              </div>
             </div>
           </div>
           <Checkbox
