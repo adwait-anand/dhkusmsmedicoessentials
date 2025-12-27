@@ -32,7 +32,7 @@ ${discount > 0 ? `🎉 *Bundle Discount (10%):* -₹${discount.toLocaleString()}
 
 Please confirm my order!`;
 
-    const phoneNumber = "919876543210"; // Replace with actual WhatsApp number
+    const phoneNumber = "917023889974";
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
   };
