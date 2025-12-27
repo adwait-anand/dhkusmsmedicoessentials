@@ -128,6 +128,7 @@ const CoachingNotes = () => {
                   totalPrice={totalPrice}
                   onRemove={handleRemove}
                   onClearAll={handleClearAll}
+                  coachingName={coaching.name}
                 />
               </div>
             </div>

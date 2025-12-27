@@ -1,5 +1,5 @@
 import { Subject } from "@/data/coachings";
-import { ShoppingBag, Sparkles, X } from "lucide-react";
+import { ShoppingBag, Sparkles, X, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface CartSummaryProps {
@@ -7,11 +7,35 @@ interface CartSummaryProps {
   totalPrice: number;
   onRemove: (id: string) => void;
   onClearAll: () => void;
+  coachingName?: string;
 }
 
-const CartSummary = ({ selectedSubjects, totalPrice, onRemove, onClearAll }: CartSummaryProps) => {
+const CartSummary = ({ selectedSubjects, totalPrice, onRemove, onClearAll, coachingName = "Notes" }: CartSummaryProps) => {
   const discount = selectedSubjects.length >= 5 ? Math.round(totalPrice * 0.1) : 0;
   const finalPrice = totalPrice - discount;
+
+  const handleWhatsAppOrder = () => {
+    const subjectsList = selectedSubjects
+      .map((s) => `• ${s.name} - ₹${s.price}`)
+      .join("\n");
+    
+    const message = `🛒 *New Order from DH-KUSMS Medico Essentials*
+
+📚 *Coaching:* ${coachingName}
+
+*Selected Subjects:*
+${subjectsList}
+
+💰 *Subtotal:* ₹${totalPrice.toLocaleString()}
+${discount > 0 ? `🎉 *Bundle Discount (10%):* -₹${discount.toLocaleString()}\n` : ""}
+✅ *Total Amount:* ₹${finalPrice.toLocaleString()}
+
+Please confirm my order!`;
+
+    const phoneNumber = "919876543210"; // Replace with actual WhatsApp number
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
+  };
 
   if (selectedSubjects.length === 0) {
     return (
@@ -101,8 +125,12 @@ const CartSummary = ({ selectedSubjects, totalPrice, onRemove, onClearAll }: Car
         )}
 
         <div className="mt-4 space-y-2">
-          <Button className="w-full gradient-accent text-accent-foreground font-semibold shadow-lg hover:opacity-90 transition-opacity">
-            Proceed to Checkout
+          <Button 
+            onClick={handleWhatsAppOrder}
+            className="w-full bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold shadow-lg transition-colors"
+          >
+            <MessageCircle className="mr-2 h-5 w-5" />
+            Order via WhatsApp
           </Button>
           <button
             onClick={onClearAll}
