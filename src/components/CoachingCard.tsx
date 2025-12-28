@@ -45,7 +45,7 @@ const CoachingCard = ({ coaching, index }: CoachingCardProps) => {
           <div className="text-right">
             <span className="text-xs text-muted-foreground">Starting from</span>
             <p className="font-display text-lg font-bold text-primary">
-              ₹{Math.min(...coaching.subjects.map((s) => s.price))}
+              NRS {Math.min(...coaching.subjects.map((s) => s.price)).toLocaleString()}
             </p>
           </div>
         </div>

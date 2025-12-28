@@ -51,7 +51,7 @@ const SubjectCard = ({ subject, isSelected, onToggle, index }: SubjectCardProps)
           <div>
             <span className="text-xs text-muted-foreground">Price</span>
             <p className="font-display text-xl font-bold text-primary">
-              ₹{subject.price}
+              NRS {subject.price.toLocaleString()}
             </p>
           </div>
           <button

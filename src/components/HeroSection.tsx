@@ -39,7 +39,7 @@ const HeroSection = () => {
             </div>
             <div className="flex items-center gap-2 text-primary-foreground/90">
               <Trophy className="h-5 w-5 text-accent" />
-              <span>Updated 2024</span>
+              <span>Updated 2025</span>
             </div>
           </div>
         </div>
