@@ -12,13 +12,13 @@ const Footer = () => {
               </div>
               <div>
                 <h3 className="font-display text-lg font-semibold text-foreground">
-                  MedNotes
+                  DH-KUSMS
                 </h3>
-                <p className="text-xs text-muted-foreground">NEET PG Preparation</p>
+                <p className="text-xs text-muted-foreground">Medical Exam Preparation</p>
               </div>
             </div>
             <p className="text-sm text-muted-foreground">
-              Your trusted partner for NEET PG exam preparation. Quality notes crafted by expert faculty.
+              Your trusted partner for FMGE, NMCLE and university exam preparation. Quality notes crafted by expert faculty.
             </p>
           </div>
 
@@ -37,18 +37,18 @@ const Footer = () => {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-primary" />
-                <span>support@mednotes.com</span>
+                <span>dhkusms@dhulikhel.com</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-primary" />
-                <span>+91 98765 43210</span>
+                <span>+9779823409169</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-8 border-t border-border pt-8 text-center text-sm text-muted-foreground">
-          <p>© 2024 MedNotes. All rights reserved.</p>
+          <p>© 2025 DH-KUSMS. All rights reserved.</p>
         </div>
       </div>
     </footer>
