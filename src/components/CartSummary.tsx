@@ -16,7 +16,7 @@ const CartSummary = ({ selectedSubjects, totalPrice, onRemove, onClearAll, coach
 
   const handleWhatsAppOrder = () => {
     const subjectsList = selectedSubjects
-      .map((s) => `• ${s.name} - ₹${s.price}`)
+      .map((s) => `• ${s.name} - NRS ${s.price.toLocaleString()}`)
       .join("\n");
     
     const message = `🛒 *New Order from DH-KUSMS Medico Essentials*
@@ -26,9 +26,9 @@ const CartSummary = ({ selectedSubjects, totalPrice, onRemove, onClearAll, coach
 *Selected Subjects:*
 ${subjectsList}
 
-💰 *Subtotal:* ₹${totalPrice.toLocaleString()}
-${discount > 0 ? `🎉 *Bundle Discount (10%):* -₹${discount.toLocaleString()}\n` : ""}
-✅ *Total Amount:* ₹${finalPrice.toLocaleString()}
+💰 *Subtotal:* NRS ${totalPrice.toLocaleString()}
+${discount > 0 ? `🎉 *Bundle Discount (10%):* -NRS ${discount.toLocaleString()}\n` : ""}
+✅ *Total Amount:* NRS ${finalPrice.toLocaleString()}
 
 Please confirm my order!`;
 
@@ -79,7 +79,7 @@ Please confirm my order!`;
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm font-semibold text-primary">
-                  ₹{subject.price}
+                  NRS {subject.price.toLocaleString()}
                 </span>
                 <button
                   onClick={() => onRemove(subject.id)}
@@ -95,7 +95,7 @@ Please confirm my order!`;
         <div className="space-y-2 border-t border-border pt-4">
           <div className="flex justify-between text-sm">
             <span className="text-muted-foreground">Subtotal</span>
-            <span className="text-card-foreground">₹{totalPrice.toLocaleString()}</span>
+            <span className="text-card-foreground">NRS {totalPrice.toLocaleString()}</span>
           </div>
           
           {discount > 0 && (
@@ -104,14 +104,14 @@ Please confirm my order!`;
                 <Sparkles className="h-3 w-3" />
                 Bundle Discount (10%)
               </span>
-              <span className="text-accent">-₹{discount.toLocaleString()}</span>
+              <span className="text-accent">-NRS {discount.toLocaleString()}</span>
             </div>
           )}
 
           <div className="flex justify-between border-t border-border pt-2">
             <span className="font-semibold text-card-foreground">Total</span>
             <span className="font-display text-2xl font-bold text-primary">
-              ₹{finalPrice.toLocaleString()}
+              NRS {finalPrice.toLocaleString()}
             </span>
           </div>
         </div>
@@ -119,7 +119,7 @@ Please confirm my order!`;
         {selectedSubjects.length >= 5 && (
           <div className="mt-3 rounded-lg bg-accent/10 p-3 text-center">
             <p className="text-sm font-medium text-accent-foreground">
-              🎉 You saved ₹{discount.toLocaleString()} with bundle discount!
+              🎉 You saved NRS {discount.toLocaleString()} with bundle discount!
             </p>
           </div>
         )}
