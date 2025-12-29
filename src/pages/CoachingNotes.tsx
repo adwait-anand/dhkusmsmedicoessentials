@@ -1,12 +1,23 @@
 import { useState, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Package, MessageCircle } from "lucide-react";
 import Header from "@/components/Header";
 import SubjectCard from "@/components/SubjectCard";
 import CartSummary from "@/components/CartSummary";
 import Footer from "@/components/Footer";
 import { getCoachingById } from "@/data/coachings";
-import { Subject } from "@/data/coachings";
+import { Button } from "@/components/ui/button";
+
+// Full set discounted prices for each coaching
+const fullSetPrices: Record<string, { price: number; label: string }> = {
+  marrow: { price: 18009, label: "Marrow8" },
+  cerebellum: { price: 14670, label: "Cereb" },
+  marrow6: { price: 27576, label: "Marrow6" },
+  prepladder: { price: 24462, label: "Stepladder" },
+  egurukul: { price: 16254, label: "Gurukul" },
+  dbmci: { price: 16560, label: "DBMCI" },
+  dams: { price: 15714, label: "DAMS" },
+};
 
 const CoachingNotes = () => {
   const { coachingId } = useParams<{ coachingId: string }>();
@@ -39,6 +50,14 @@ const CoachingNotes = () => {
     [selectedSubjects]
   );
 
+  const handleFullSetOrder = () => {
+    if (!coachingId || !fullSetPrices[coachingId]) return;
+    const { price, label } = fullSetPrices[coachingId];
+    const message = `Hi I want Full Set ${label} Net Price NRS ${price}`;
+    const whatsappUrl = `https://wa.me/9779823409169?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
   if (!coaching) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center bg-background">
@@ -49,6 +68,8 @@ const CoachingNotes = () => {
       </div>
     );
   }
+
+  const fullSetInfo = fullSetPrices[coachingId || ""];
 
   return (
     <div className="min-h-screen bg-background">
@@ -64,7 +85,7 @@ const CoachingNotes = () => {
 
           <div className="container relative mx-auto px-4">
             <Link
-              to="/"
+              to="/handwritten-notes"
               className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/20"
             >
               <ArrowLeft className="h-4 w-4" />
@@ -94,6 +115,47 @@ const CoachingNotes = () => {
             </svg>
           </div>
         </section>
+
+        {/* Full Set Deal Banner */}
+        {fullSetInfo && (
+          <section className="py-6">
+            <div className="container mx-auto px-4">
+              <div className="rounded-2xl bg-gradient-to-r from-primary/10 to-accent/10 border-2 border-primary/20 p-6 md:p-8">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/20">
+                      <Package className="h-7 w-7 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-display text-xl font-bold text-foreground md:text-2xl">
+                        Buy Full Set (All 19 Subjects)
+                      </h3>
+                      <p className="text-muted-foreground">
+                        Get <span className="font-bold text-primary">Extra 10% OFF</span> on the complete set!
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="text-right">
+                      <p className="text-sm text-muted-foreground">Discounted Price</p>
+                      <p className="font-display text-2xl font-bold text-primary">
+                        NRS {fullSetInfo.price.toLocaleString()}
+                      </p>
+                    </div>
+                    <Button 
+                      onClick={handleFullSetOrder}
+                      size="lg"
+                      className="gap-2 bg-primary hover:bg-primary/90"
+                    >
+                      <MessageCircle className="h-5 w-5" />
+                      Order Full Set
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Subjects Section */}
         <section className="py-12 md:py-16">

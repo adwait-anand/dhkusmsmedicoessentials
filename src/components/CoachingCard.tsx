@@ -8,8 +8,6 @@ interface CoachingCardProps {
 }
 
 const CoachingCard = ({ coaching, index }: CoachingCardProps) => {
-  const totalValue = coaching.subjects.reduce((sum, s) => sum + s.price, 0);
-
   return (
     <Link
       to={`/coaching/${coaching.id}`}
@@ -38,15 +36,9 @@ const CoachingCard = ({ coaching, index }: CoachingCardProps) => {
           {coaching.description}
         </p>
 
-        <div className="flex items-center justify-between border-t border-border pt-4">
+        <div className="flex items-center border-t border-border pt-4">
           <div className="text-sm text-muted-foreground">
-            <span className="font-semibold text-card-foreground">{coaching.subjects.length}</span> subjects
-          </div>
-          <div className="text-right">
-            <span className="text-xs text-muted-foreground">Starting from</span>
-            <p className="font-display text-lg font-bold text-primary">
-              NRS {Math.min(...coaching.subjects.map((s) => s.price)).toLocaleString()}
-            </p>
+            <span className="font-semibold text-card-foreground">{coaching.subjects.length}</span> subjects available
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import HomeOptionCard from "@/components/HomeOptionCard";
 import Footer from "@/components/Footer";
-import { NotebookPen, BookOpen } from "lucide-react";
+import { NotebookPen, BookOpen, BookMarked } from "lucide-react";
 
 const Index = () => {
   return (
@@ -19,14 +19,14 @@ const Index = () => {
                 What Are You Looking For?
               </h2>
               <p className="mx-auto max-w-2xl text-muted-foreground">
-                Choose from our premium collection of handwritten notes or MBBS Fastrack revision books.
+                Choose from our premium collection of handwritten notes, MBBS Fastrack books, or second hand textbooks.
               </p>
             </div>
 
-            <div className="grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
+            <div className="grid gap-6 md:grid-cols-3 max-w-5xl mx-auto">
               <HomeOptionCard
                 title="Handwritten Notes"
-                description="Premium NEET PG notes from 7 top coaching institutes with subject-wise pricing"
+                description="Premium notes from 7 top coaching institutes"
                 icon={NotebookPen}
                 to="/handwritten-notes"
                 gradient="from-blue-500 to-indigo-600"
@@ -34,11 +34,19 @@ const Index = () => {
               />
               <HomeOptionCard
                 title="MBBS Fastrack Books"
-                description="Quick revision books for all MBBS years - First Year to Final Year"
+                description="Quick revision books for all MBBS years"
                 icon={BookOpen}
                 to="/fastrack-books"
                 gradient="from-emerald-500 to-teal-600"
                 index={1}
+              />
+              <HomeOptionCard
+                title="Second Hand Books"
+                description="Quality used textbooks at affordable prices"
+                icon={BookMarked}
+                to="/second-hand-books"
+                gradient="from-amber-500 to-orange-600"
+                index={2}
               />
             </div>
           </div>
