@@ -19,7 +19,7 @@ const Index = () => {
                 What Are You Looking For?
               </h2>
               <p className="mx-auto max-w-2xl text-muted-foreground">
-                Choose from our premium collection of handwritten notes, MBBS Fastrack books, or second hand textbooks.
+                Choose from our premium collection of handwritten notes, MBBS FastTrack books, or second hand textbooks.
               </p>
             </div>
 
@@ -33,7 +33,7 @@ const Index = () => {
                 index={0}
               />
               <HomeOptionCard
-                title="MBBS Fastrack Books"
+                title="MBBS FastTrack Books"
                 description="Quick revision books for all MBBS years"
                 icon={BookOpen}
                 to="/fastrack-books"
