@@ -1,4 +1,5 @@
 import { BookOpen, ShoppingCart } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 interface HeaderProps {
   cartCount: number;
@@ -22,6 +23,7 @@ const Header = ({ cartCount, totalPrice }: HeaderProps) => {
         </div>
 
         <div className="flex items-center gap-4">
+          <ThemeToggle />
           <div className="flex items-center gap-2 rounded-full bg-secondary px-4 py-2">
             <ShoppingCart className="h-4 w-4 text-primary" />
             <span className="text-sm font-medium text-secondary-foreground">
@@ -30,7 +32,7 @@ const Header = ({ cartCount, totalPrice }: HeaderProps) => {
             {totalPrice > 0 && (
               <>
                 <span className="text-muted-foreground">•</span>
-                <span className="font-semibold text-primary">₹{totalPrice.toLocaleString()}</span>
+                <span className="font-semibold text-primary">NRS {totalPrice.toLocaleString()}</span>
               </>
             )}
           </div>
