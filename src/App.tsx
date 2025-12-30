@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import HandwrittenNotes from "./pages/HandwrittenNotes";
 import FastrackBooks from "./pages/FastrackBooks";
 import SecondHandBooks from "./pages/SecondHandBooks";
+import MedicalInstruments from "./pages/MedicalInstruments";
 import CoachingNotes from "./pages/CoachingNotes";
 import NotFound from "./pages/NotFound";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/handwritten-notes" element={<HandwrittenNotes />} />
             <Route path="/fastrack-books" element={<FastrackBooks />} />
             <Route path="/second-hand-books" element={<SecondHandBooks />} />
+            <Route path="/medical-instruments" element={<MedicalInstruments />} />
             <Route path="/coaching/:coachingId" element={<CoachingNotes />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

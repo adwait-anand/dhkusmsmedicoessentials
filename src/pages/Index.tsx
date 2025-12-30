@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import HomeOptionCard from "@/components/HomeOptionCard";
 import Footer from "@/components/Footer";
-import { NotebookPen, BookOpen, BookMarked } from "lucide-react";
+import { NotebookPen, BookOpen, BookMarked, Stethoscope } from "lucide-react";
 
 const Index = () => {
   return (
@@ -19,11 +19,11 @@ const Index = () => {
                 What Are You Looking For?
               </h2>
               <p className="mx-auto max-w-2xl text-muted-foreground">
-                Choose from our premium collection of handwritten notes, MBBS FastTrack books, or second hand textbooks.
+                Choose from our premium collection of handwritten notes, MBBS FastTrack books, second hand textbooks, or medical instruments.
               </p>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-3 max-w-5xl mx-auto">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
               <HomeOptionCard
                 title="Handwritten Notes"
                 description="Premium notes from 7 top coaching institutes"
@@ -47,6 +47,14 @@ const Index = () => {
                 to="/second-hand-books"
                 gradient="from-amber-500 to-orange-600"
                 index={2}
+              />
+              <HomeOptionCard
+                title="Medical Instruments"
+                description="Essential tools for medical students"
+                icon={Stethoscope}
+                to="/medical-instruments"
+                gradient="from-rose-500 to-pink-600"
+                index={3}
               />
             </div>
           </div>
