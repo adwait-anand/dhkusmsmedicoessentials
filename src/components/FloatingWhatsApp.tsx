@@ -1,7 +1,7 @@
 import { MessageCircle } from "lucide-react";
 
 const FloatingWhatsApp = () => {
-  const phoneNumber = "9779818418646";
+  const phoneNumber = "917023889974";
   const whatsappUrl = `https://wa.me/${phoneNumber}`;
 
   return (

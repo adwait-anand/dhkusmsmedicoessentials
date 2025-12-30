@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const HandwrittenNotes = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Header cartCount={0} totalPrice={0} />
+      <Header />
 
       <main>
         {/* Hero Section */}
