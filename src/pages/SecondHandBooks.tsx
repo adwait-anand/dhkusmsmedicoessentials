@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, X, MessageCircle, BookMarked } from "lucide-react";
+import { ArrowLeft, X, BookMarked, ShoppingCart, Check } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -18,6 +18,8 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Badge } from "@/components/ui/badge";
+import { useCart } from "@/contexts/CartContext";
+import { useToast } from "@/hooks/use-toast";
 
 const booksList = [
   "Fastrack - First Year",
@@ -60,6 +62,8 @@ const booksList = [
 const SecondHandBooks = () => {
   const [selectedBooks, setSelectedBooks] = useState<string[]>([]);
   const [open, setOpen] = useState(false);
+  const { addItem, items } = useCart();
+  const { toast } = useToast();
 
   const handleSelect = (book: string) => {
     if (!selectedBooks.includes(book)) {
@@ -72,18 +76,27 @@ const SecondHandBooks = () => {
     setSelectedBooks(selectedBooks.filter((b) => b !== book));
   };
 
-  const handleWhatsAppOrder = () => {
-    if (selectedBooks.length === 0) return;
-    
-    const bookList = selectedBooks.join(", ");
-    const message = `Hi, I want to buy the following second hand books:\n\n${bookList}\n\nPlease let me know the availability and prices.`;
-    const whatsappUrl = `https://wa.me/9779823409169?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, "_blank");
+  const handleAddToCart = () => {
+    selectedBooks.forEach((book) => {
+      const bookId = book.toLowerCase().replace(/[^a-z0-9]/g, "-");
+      if (!items.some((item) => item.id === `secondhand-${bookId}`)) {
+        addItem({
+          id: `secondhand-${bookId}`,
+          name: book,
+          category: "secondhand",
+        });
+      }
+    });
+    toast({
+      title: "Added to cart",
+      description: `${selectedBooks.length} book${selectedBooks.length > 1 ? "s" : ""} added to your cart.`,
+    });
+    setSelectedBooks([]);
   };
 
   return (
     <div className="min-h-screen bg-background">
-      <Header cartCount={0} totalPrice={0} />
+      <Header />
 
       <main>
         {/* Hero Section */}
@@ -219,20 +232,20 @@ const SecondHandBooks = () => {
                 </div>
               )}
 
-              {/* Order Button */}
+              {/* Add to Cart Button */}
               <Button
-                onClick={handleWhatsAppOrder}
+                onClick={handleAddToCart}
                 disabled={selectedBooks.length === 0}
                 size="lg"
-                className="w-full gap-2 bg-green-600 hover:bg-green-700"
+                className="w-full gap-2 bg-primary hover:bg-primary/90"
               >
-                <MessageCircle className="h-5 w-5" />
-                Order on WhatsApp ({selectedBooks.length} {selectedBooks.length === 1 ? "book" : "books"})
+                <ShoppingCart className="h-5 w-5" />
+                Add to Cart ({selectedBooks.length} {selectedBooks.length === 1 ? "book" : "books"})
               </Button>
 
               {selectedBooks.length === 0 && (
                 <p className="mt-4 text-center text-sm text-muted-foreground">
-                  Select at least one book to place an order
+                  Select at least one book to add to cart
                 </p>
               )}
             </div>

@@ -7,7 +7,7 @@ import { NotebookPen, BookOpen, BookMarked, Stethoscope } from "lucide-react";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Header cartCount={0} totalPrice={0} />
+      <Header />
 
       <main>
         <HeroSection />

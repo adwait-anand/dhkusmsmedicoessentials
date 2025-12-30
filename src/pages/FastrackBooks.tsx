@@ -1,28 +1,36 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { fastrackBooks } from "@/data/fastrack";
-import { ArrowLeft, BookOpen, MessageCircle } from "lucide-react";
+import { ArrowLeft, BookOpen, ShoppingCart, Check } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useCart } from "@/contexts/CartContext";
+import { useToast } from "@/hooks/use-toast";
 
 const FastrackBooks = () => {
-  const handleWhatsAppOrder = (bookName: string, price: number) => {
-    const message = `🛒 *New Order from DH-KUSMS Medico Essentials*
+  const { addItem, items } = useCart();
+  const { toast } = useToast();
 
-📚 *Product:* ${bookName}
+  const handleAddToCart = (book: typeof fastrackBooks[0]) => {
+    addItem({
+      id: `fastrack-${book.id}`,
+      name: book.name,
+      price: book.price,
+      category: "fastrack",
+    });
+    toast({
+      title: "Added to cart",
+      description: `${book.name} has been added to your cart.`,
+    });
+  };
 
-💰 *Price:* NRS ${price.toLocaleString()}
-
-Please confirm my order!`;
-
-    const phoneNumber = "917023889974";
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
+  const isInCart = (bookId: string) => {
+    return items.some((item) => item.id === `fastrack-${bookId}`);
   };
 
   return (
     <div className="min-h-screen bg-background">
-      <Header cartCount={0} totalPrice={0} />
+      <Header />
 
       <main>
         {/* Hero Section */}
@@ -47,7 +55,7 @@ Please confirm my order!`;
               </div>
               <div>
                 <h1 className="font-display text-3xl font-bold text-primary-foreground md:text-4xl">
-                  MBBS Fastrack Books
+                  MBBS FastTrack Books
                 </h1>
                 <p className="text-primary-foreground/80">
                   Quick revision books for all MBBS years
@@ -102,11 +110,24 @@ Please confirm my order!`;
                     </div>
 
                     <Button
-                      onClick={() => handleWhatsAppOrder(book.name, book.price)}
-                      className="w-full bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold shadow-lg transition-colors"
+                      onClick={() => handleAddToCart(book)}
+                      className={`w-full font-semibold shadow-lg transition-colors gap-2 ${
+                        isInCart(book.id)
+                          ? "bg-green-600 hover:bg-green-700"
+                          : "bg-primary hover:bg-primary/90"
+                      }`}
                     >
-                      <MessageCircle className="mr-2 h-5 w-5" />
-                      Order Now
+                      {isInCart(book.id) ? (
+                        <>
+                          <Check className="h-5 w-5" />
+                          Added to Cart
+                        </>
+                      ) : (
+                        <>
+                          <ShoppingCart className="h-5 w-5" />
+                          Add to Cart
+                        </>
+                      )}
                     </Button>
                   </div>
                 </div>

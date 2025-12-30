@@ -1,12 +1,13 @@
-import { useState, useMemo } from "react";
+import { useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Package, MessageCircle } from "lucide-react";
+import { ArrowLeft, Package, MessageCircle, ShoppingCart } from "lucide-react";
 import Header from "@/components/Header";
-import SubjectCard from "@/components/SubjectCard";
-import CartSummary from "@/components/CartSummary";
 import Footer from "@/components/Footer";
 import { getCoachingById } from "@/data/coachings";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { useCart } from "@/contexts/CartContext";
+import { useToast } from "@/hooks/use-toast";
 
 // Full set discounted prices for each coaching
 const fullSetPrices: Record<string, { price: number; label: string }> = {
@@ -22,39 +23,32 @@ const fullSetPrices: Record<string, { price: number; label: string }> = {
 const CoachingNotes = () => {
   const { coachingId } = useParams<{ coachingId: string }>();
   const coaching = getCoachingById(coachingId || "");
-  const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const { addItem, items } = useCart();
+  const { toast } = useToast();
 
-  const handleToggle = (id: string) => {
-    setSelectedIds((prev) =>
-      prev.includes(id)
-        ? prev.filter((selectedId) => selectedId !== id)
-        : [...prev, id]
-    );
+  const handleAddToCart = (subject: { id: string; name: string; price: number }) => {
+    addItem({
+      id: `coaching-${coachingId}-${subject.id}`,
+      name: subject.name,
+      price: subject.price,
+      category: "coaching",
+      coachingName: coaching?.name,
+    });
+    toast({
+      title: "Added to cart",
+      description: `${subject.name} has been added to your cart.`,
+    });
   };
 
-  const handleRemove = (id: string) => {
-    setSelectedIds((prev) => prev.filter((selectedId) => selectedId !== id));
+  const isInCart = (subjectId: string) => {
+    return items.some((item) => item.id === `coaching-${coachingId}-${subjectId}`);
   };
-
-  const handleClearAll = () => {
-    setSelectedIds([]);
-  };
-
-  const selectedSubjects = useMemo(
-    () => (coaching?.subjects || []).filter((subject) => selectedIds.includes(subject.id)),
-    [selectedIds, coaching]
-  );
-
-  const totalPrice = useMemo(
-    () => selectedSubjects.reduce((sum, subject) => sum + subject.price, 0),
-    [selectedSubjects]
-  );
 
   const handleFullSetOrder = () => {
     if (!coachingId || !fullSetPrices[coachingId]) return;
     const { price, label } = fullSetPrices[coachingId];
     const message = `Hi I want Full Set ${label} Net Price NRS ${price}`;
-    const whatsappUrl = `https://wa.me/9779823409169?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/917023889974?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
   };
 
@@ -73,7 +67,7 @@ const CoachingNotes = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header cartCount={selectedIds.length} totalPrice={totalPrice} />
+      <Header />
 
       <main>
         {/* Coaching Header */}
@@ -145,7 +139,7 @@ const CoachingNotes = () => {
                     <Button 
                       onClick={handleFullSetOrder}
                       size="lg"
-                      className="gap-2 bg-primary hover:bg-primary/90"
+                      className="gap-2 bg-green-600 hover:bg-green-700"
                     >
                       <MessageCircle className="h-5 w-5" />
                       Order Full Set
@@ -165,34 +159,53 @@ const CoachingNotes = () => {
                 Select Your Subjects
               </h2>
               <p className="mx-auto max-w-2xl text-muted-foreground">
-                Choose the notes you need from {coaching.name}. Get 10% off when you select 5 or more!
+                Choose the notes you need from {coaching.name}. Add items to cart and checkout via WhatsApp.
               </p>
             </div>
 
-            <div className="grid gap-8 lg:grid-cols-3">
-              <div className="lg:col-span-2">
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {coaching.subjects.map((subject, index) => (
-                    <SubjectCard
-                      key={subject.id}
-                      subject={subject}
-                      isSelected={selectedIds.includes(subject.id)}
-                      onToggle={handleToggle}
-                      index={index}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              <div className="lg:col-span-1">
-                <CartSummary
-                  selectedSubjects={selectedSubjects}
-                  totalPrice={totalPrice}
-                  onRemove={handleRemove}
-                  onClearAll={handleClearAll}
-                  coachingName={coaching.name}
-                />
-              </div>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {coaching.subjects.map((subject, index) => (
+                <Card
+                  key={subject.id}
+                  className={`group transition-all duration-300 hover:shadow-lg animate-fade-in ${
+                    isInCart(subject.id)
+                      ? "border-primary bg-primary/5 ring-1 ring-primary"
+                      : "border-border"
+                  }`}
+                  style={{ animationDelay: `${index * 0.05}s` }}
+                >
+                  <CardContent className="p-4">
+                    <div className="flex items-start justify-between gap-2 mb-3">
+                      <h3 className="font-semibold text-foreground">{subject.name}</h3>
+                      <span className="text-2xl">{subject.icon}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <p className="font-display text-lg font-bold text-primary">
+                        NRS {subject.price.toLocaleString()}
+                      </p>
+                      <Button
+                        size="sm"
+                        onClick={() => handleAddToCart(subject)}
+                        disabled={isInCart(subject.id)}
+                        className={`gap-1 ${
+                          isInCart(subject.id)
+                            ? "bg-green-600"
+                            : "bg-primary hover:bg-primary/90"
+                        }`}
+                      >
+                        {isInCart(subject.id) ? (
+                          "Added"
+                        ) : (
+                          <>
+                            <ShoppingCart className="h-4 w-4" />
+                            Add
+                          </>
+                        )}
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </section>
