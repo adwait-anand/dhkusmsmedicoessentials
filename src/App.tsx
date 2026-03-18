@@ -13,6 +13,8 @@ import SecondHandBooks from "./pages/SecondHandBooks";
 import MedicalInstruments from "./pages/MedicalInstruments";
 import CoachingNotes from "./pages/CoachingNotes";
 import NotFound from "./pages/NotFound";
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/admin/AdminDashboard";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
 
 const queryClient = new QueryClient();
