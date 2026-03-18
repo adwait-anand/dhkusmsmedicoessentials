@@ -104,6 +104,14 @@ const FastrackBooks = () => {
 
                     <div className="mb-4 border-t border-border pt-4">
                       <span className="text-xs text-muted-foreground">Price</span>
+                      <div className="flex items-center gap-2 mt-1">
+                        <span className="text-sm text-muted-foreground line-through">
+                          NRS {Math.round(book.price / 0.8).toLocaleString()}
+                        </span>
+                        <span className="rounded-full bg-green-600/20 px-2 py-0.5 text-xs font-bold text-green-400">
+                          20% OFF
+                        </span>
+                      </div>
                       <p className="font-display text-2xl font-bold text-primary">
                         NRS {book.price.toLocaleString()}
                       </p>
