@@ -1,18 +1,76 @@
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import CoachingCard from "@/components/CoachingCard";
 import SubjectSearch from "@/components/SubjectSearch";
-import { coachings } from "@/data/coachings";
-import { ArrowLeft, NotebookPen } from "lucide-react";
+import { ArrowLeft, NotebookPen, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+
+interface CoachingTile {
+  id: string;
+  name: string;
+  icon: string;
+  color: string;
+  description: string;
+  subjectCount: number;
+}
+
+const COACHING_META: Record<string, { icon: string; color: string; description: string }> = {
+  "M@rrow 8.0": { icon: "📚", color: "from-blue-500 to-blue-600", description: "Premium NEET PG preparation notes" },
+  "Cerebrum 2.0": { icon: "🧠", color: "from-pink-500 to-pink-600", description: "Brain-focused learning materials" },
+  "M@rrow 6.0": { icon: "🚀", color: "from-indigo-500 to-indigo-600", description: "Classic Marrow 6.0 edition notes" },
+  "Stepladder (Prep X)": { icon: "🎯", color: "from-purple-500 to-purple-600", description: "Comprehensive study materials" },
+  "eGurukul 4.0": { icon: "📖", color: "from-green-500 to-green-600", description: "Digital learning excellence" },
+  "DBMCI One": { icon: "🏆", color: "from-orange-500 to-orange-600", description: "DBMCI premium notes collection" },
+  "D@MS Alpha": { icon: "⭐", color: "from-amber-500 to-amber-600", description: "DAMS Alpha edition notes" },
+  "BTR": { icon: "🔥", color: "from-red-500 to-red-600", description: "Complete 19-subject bundle notes" },
+  "Rapid Revision": { icon: "⚡", color: "from-cyan-500 to-cyan-600", description: "Quick revision bundle for all subjects" },
+};
 
 const HandwrittenNotes = () => {
+  const [tiles, setTiles] = useState<CoachingTile[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchInstitutes = async () => {
+      const { data, error } = await supabase
+        .from("coaching_notes")
+        .select("coaching_institute, subject");
+
+      if (error || !data) {
+        setLoading(false);
+        return;
+      }
+
+      const grouped = new Map<string, number>();
+      data.forEach((row) => {
+        grouped.set(row.coaching_institute, (grouped.get(row.coaching_institute) || 0) + 1);
+      });
+
+      const result: CoachingTile[] = Array.from(grouped.entries()).map(([name, count]) => {
+        const meta = COACHING_META[name] || { icon: "📝", color: "from-gray-500 to-gray-600", description: "Coaching notes" };
+        return {
+          id: encodeURIComponent(name),
+          name,
+          icon: meta.icon,
+          color: meta.color,
+          description: meta.description,
+          subjectCount: count,
+        };
+      });
+
+      setTiles(result);
+      setLoading(false);
+    };
+
+    fetchInstitutes();
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
 
       <main>
-        {/* Hero Section */}
         <section className="relative overflow-hidden gradient-hero py-12 md:py-16">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-10 left-10 h-32 w-32 rounded-full bg-accent blur-3xl" />
@@ -42,7 +100,6 @@ const HandwrittenNotes = () => {
               </div>
             </div>
 
-            {/* Subject Search */}
             <SubjectSearch />
           </div>
 
@@ -56,7 +113,6 @@ const HandwrittenNotes = () => {
           </div>
         </section>
 
-        {/* Coaching Cards Grid */}
         <section className="py-12 md:py-16">
           <div className="container mx-auto px-4">
             <div className="mb-10 text-center">
@@ -65,15 +121,45 @@ const HandwrittenNotes = () => {
               </h2>
               <p className="mx-auto max-w-2xl text-muted-foreground">
                 Select a coaching institute to view their NEET PG notes and prices.
-                We offer notes from {coachings.length} top coaching institutes.
+                {!loading && ` We offer notes from ${tiles.length} top coaching institutes.`}
               </p>
             </div>
 
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {coachings.map((coaching, index) => (
-                <CoachingCard key={coaching.id} coaching={coaching} index={index} />
-              ))}
-            </div>
+            {loading ? (
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <div key={i} className="h-48 rounded-2xl bg-muted animate-pulse" />
+                ))}
+              </div>
+            ) : (
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {tiles.map((tile, index) => (
+                  <Link
+                    key={tile.id}
+                    to={`/coaching/${tile.id}`}
+                    className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-card transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animate-fade-in"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <div className={`absolute inset-0 bg-gradient-to-br ${tile.color} opacity-0 transition-opacity duration-300 group-hover:opacity-10`} />
+                    <div className="relative">
+                      <div className="mb-4 flex items-center justify-between">
+                        <div className={`flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${tile.color} text-2xl shadow-lg`}>
+                          {tile.icon}
+                        </div>
+                        <ArrowRight className="h-5 w-5 text-muted-foreground transition-transform duration-300 group-hover:translate-x-1 group-hover:text-primary" />
+                      </div>
+                      <h3 className="mb-2 font-display text-xl font-bold text-card-foreground">{tile.name}</h3>
+                      <p className="mb-4 text-sm text-muted-foreground">{tile.description}</p>
+                      <div className="flex items-center border-t border-border pt-4">
+                        <div className="text-sm text-muted-foreground">
+                          <span className="font-semibold text-card-foreground">{tile.subjectCount}</span> subjects available
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
         </section>
       </main>
