@@ -1,17 +1,45 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Search, ArrowRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { getAllSubjects } from "@/data/coachings";
 import { Link } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+
+interface SubjectEntry {
+  name: string;
+  coachings: { coachingId: string; coachingName: string; price: number }[];
+}
 
 const SubjectSearch = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const allSubjects = getAllSubjects();
+  const [allSubjects, setAllSubjects] = useState<SubjectEntry[]>([]);
+
+  useEffect(() => {
+    const fetch = async () => {
+      const { data } = await supabase
+        .from("coaching_notes")
+        .select("subject, coaching_institute, price")
+        .eq("in_stock", true);
+
+      if (!data) return;
+
+      const map = new Map<string, SubjectEntry>();
+      data.forEach((row) => {
+        if (!map.has(row.subject)) {
+          map.set(row.subject, { name: row.subject, coachings: [] });
+        }
+        map.get(row.subject)!.coachings.push({
+          coachingId: encodeURIComponent(row.coaching_institute),
+          coachingName: row.coaching_institute,
+          price: row.price,
+        });
+      });
+      setAllSubjects(Array.from(map.values()));
+    };
+    fetch();
+  }, []);
 
   const filteredSubjects = searchQuery.trim()
-    ? allSubjects.filter((subject) =>
-        subject.name.toLowerCase().includes(searchQuery.toLowerCase())
-      )
+    ? allSubjects.filter((s) => s.name.toLowerCase().includes(searchQuery.toLowerCase()))
     : [];
 
   return (
@@ -32,10 +60,7 @@ const SubjectSearch = () => {
           {filteredSubjects.map((subject) => (
             <div key={subject.name} className="border-b border-border last:border-b-0">
               <div className="px-4 py-3 bg-muted/50">
-                <div className="flex items-center gap-2">
-                  <span className="text-xl">{subject.icon}</span>
-                  <span className="font-semibold text-card-foreground">{subject.name}</span>
-                </div>
+                <span className="font-semibold text-card-foreground">{subject.name}</span>
               </div>
               <div className="divide-y divide-border/50">
                 {subject.coachings.map((coaching) => (
