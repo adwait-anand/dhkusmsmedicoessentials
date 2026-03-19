@@ -15,6 +15,8 @@ const INSTITUTES = [
   "M@rrow 6.0",
   "Stepladder (Prep X)",
   "DBMCI One",
+  "BTR",
+  "Rapid Revision",
 ];
 
 const CoachingNotesTable = () => {
