@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import HomeOptionCard from "@/components/HomeOptionCard";
 import Footer from "@/components/Footer";
-import { NotebookPen, BookOpen, BookMarked, Stethoscope } from "lucide-react";
+import { NotebookPen, BookOpen, BookMarked, Stethoscope, Zap } from "lucide-react";
 
 const Index = () => {
   return (
@@ -55,6 +55,14 @@ const Index = () => {
                 to="/medical-instruments"
                 gradient="from-rose-500 to-pink-600"
                 index={3}
+              />
+              <HomeOptionCard
+                title="Rapid Revision Prep"
+                description="Quick revision notes for all 19 subjects with 10% bundle discount"
+                icon={Zap}
+                to="/rapid-revision"
+                gradient="from-cyan-500 to-teal-600"
+                index={4}
               />
             </div>
           </div>
