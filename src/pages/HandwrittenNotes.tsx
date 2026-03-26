@@ -136,7 +136,7 @@ const HandwrittenNotes = () => {
                 {tiles.map((tile, index) => (
                   <Link
                     key={tile.id}
-                    to={`/coaching/${tile.id}`}
+                    to={tile.name === "Rapid Revision" ? "/rapid-revision" : `/coaching/${tile.id}`}
                     className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-card transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animate-fade-in"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
