@@ -12,6 +12,7 @@ import FastrackBooks from "./pages/FastrackBooks";
 import SecondHandBooks from "./pages/SecondHandBooks";
 import MedicalInstruments from "./pages/MedicalInstruments";
 import CoachingNotes from "./pages/CoachingNotes";
+import RapidRevisionPrep from "./pages/RapidRevisionPrep";
 import NotFound from "./pages/NotFound";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
@@ -34,6 +35,7 @@ const App = () => (
               <Route path="/second-hand-books" element={<SecondHandBooks />} />
               <Route path="/medical-instruments" element={<MedicalInstruments />} />
               <Route path="/coaching/:coachingId" element={<CoachingNotes />} />
+              <Route path="/rapid-revision" element={<RapidRevisionPrep />} />
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="/admin" element={<AdminDashboard />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
