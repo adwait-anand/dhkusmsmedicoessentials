@@ -248,6 +248,26 @@ const SecondHandBooks = () => {
                   Select at least one book to add to cart
                 </p>
               )}
+
+              {/* Sell Your Books Section */}
+              <div className="mt-12 rounded-xl border border-primary/20 bg-primary/5 p-6 text-center">
+                <h3 className="mb-2 font-display text-xl font-bold text-foreground">
+                  Want to Sell Your Old Books?
+                </h3>
+                <p className="mb-4 text-muted-foreground">
+                  We accept old medical textbooks! Fill out the form below and we'll get back to you.
+                </p>
+                <a
+                  href="https://forms.gle/XBTrs5hP6ykSeNUc7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="outline" size="lg" className="gap-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                    <BookMarked className="h-5 w-5" />
+                    Sell Your Books
+                  </Button>
+                </a>
+              </div>
             </div>
           </div>
         </section>
