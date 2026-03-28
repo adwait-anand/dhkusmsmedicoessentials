@@ -59,6 +59,42 @@ const Index = () => {
             </div>
           </div>
         </section>
+
+        {/* Shop Location Map */}
+        <section className="py-12 md:py-20 border-t border-border">
+          <div className="container mx-auto px-4">
+            <div className="mb-8 text-center">
+              <h2 className="mb-3 font-display text-3xl font-bold text-foreground md:text-4xl">
+                Visit Our Shop
+              </h2>
+              <p className="mx-auto max-w-2xl text-muted-foreground">
+                DH Kusms Medico Essentials — Find us on Google Maps
+              </p>
+            </div>
+            <div className="max-w-4xl mx-auto rounded-xl overflow-hidden border border-border shadow-lg">
+              <iframe
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=DH+Kusms+medico+essentials&zoom=15"
+                width="100%"
+                height="400"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="DH Kusms Medico Essentials Location"
+              />
+            </div>
+            <div className="mt-4 text-center">
+              <a
+                href="https://maps.app.goo.gl/F1ERUhZwjeqQbfMx6?g_st=ac"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
+              >
+                Open in Google Maps →
+              </a>
+            </div>
+          </div>
+        </section>
       </main>
 
       <Footer />
