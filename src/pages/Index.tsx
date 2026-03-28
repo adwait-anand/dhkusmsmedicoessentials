@@ -68,19 +68,19 @@ const Index = () => {
                 Visit Our Shop
               </h2>
               <p className="mx-auto max-w-2xl text-muted-foreground">
-                DH Kusms Medico Essentials — Find us on Google Maps
+                Dhulikhel Hospital, Bylane to Ayan Hotel, Road, Dhulikhel 45210, Nepal
               </p>
             </div>
             <div className="max-w-4xl mx-auto rounded-xl overflow-hidden border border-border shadow-lg">
               <iframe
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=DH+Kusms+medico+essentials&zoom=15"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1000!2d85.5422!3d27.6217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb09a7f1e6d4b7%3A0x5e2e7b0e9b1e1e1e!2sDH-KUSMS%20Medico%20Essentials!5e0!3m2!1sen!2snp!4v1700000000000!5m2!1sen!2snp"
                 width="100%"
                 height="400"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="DH Kusms Medico Essentials Location"
+                title="DH-KUSMS Medico Essentials Location"
               />
             </div>
             <div className="mt-4 text-center">
