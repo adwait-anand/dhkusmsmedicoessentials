@@ -11,30 +11,26 @@ interface SubjectCardProps {
 const SubjectCard = ({ subject, isSelected, onToggle, index }: SubjectCardProps) => {
   return (
     <div
-      className={`group relative overflow-hidden rounded-xl border-2 transition-all duration-300 cursor-pointer animate-slide-up ${
+      className={`group relative overflow-hidden rounded-xl border transition-all duration-300 cursor-pointer animate-slide-up ${
         isSelected
-          ? "border-primary bg-primary/5 shadow-card-hover"
-          : "border-border bg-card hover:border-primary/50 hover:shadow-card"
+          ? "border-primary/60 bg-primary/5 shadow-card-hover glow-primary"
+          : "border-border/50 bg-card hover:border-primary/30 hover:shadow-card"
       }`}
-      style={{ animationDelay: `${index * 0.05}s` }}
+      style={{ animationDelay: `${index * 0.04}s` }}
       onClick={() => onToggle(subject.id)}
     >
       {/* Selected indicator */}
       {isSelected && (
-        <div className="absolute top-0 right-0 h-16 w-16 overflow-hidden">
-          <div className="absolute -right-4 -top-4 h-8 w-16 rotate-45 bg-primary" />
-        </div>
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary to-accent" />
       )}
 
       <div className="p-5">
         <div className="mb-4 flex items-start justify-between">
           <div className="flex items-center gap-3">
-            <span className="text-3xl">{subject.icon}</span>
-            <div>
-              <h3 className="font-display text-lg font-semibold text-card-foreground">
-                {subject.name}
-              </h3>
-            </div>
+            <span className="text-2xl">{subject.icon}</span>
+            <h3 className="font-display text-base font-bold text-card-foreground tracking-tight">
+              {subject.name}
+            </h3>
           </div>
           <Checkbox
             checked={isSelected}
@@ -47,21 +43,21 @@ const SubjectCard = ({ subject, isSelected, onToggle, index }: SubjectCardProps)
           {subject.description}
         </p>
 
-        <div className="flex items-center justify-between border-t border-border pt-4">
+        <div className="flex items-center justify-between border-t border-border/50 pt-3">
           <div>
-            <span className="text-xs text-muted-foreground">Price</span>
-            <p className="font-display text-xl font-bold text-primary">
+            <span className="text-[10px] text-muted-foreground uppercase tracking-widest">Price</span>
+            <p className="font-display text-lg font-bold text-primary">
               NRS {subject.price.toLocaleString()}
             </p>
           </div>
           <button
-            className={`rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200 ${
+            className={`rounded-lg px-4 py-2 text-xs font-semibold transition-all duration-300 ${
               isSelected
-                ? "bg-primary text-primary-foreground"
+                ? "bg-primary text-primary-foreground shadow-lg"
                 : "bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground"
             }`}
           >
-            {isSelected ? "Selected" : "Add to Cart"}
+            {isSelected ? "✓ Selected" : "Add to Cart"}
           </button>
         </div>
       </div>
