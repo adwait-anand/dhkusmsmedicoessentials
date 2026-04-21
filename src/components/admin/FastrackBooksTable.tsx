@@ -33,7 +33,7 @@ const FastrackBooksTable = () => {
   const updateField = async (id: string, field: string, value: number | string | boolean) => {
     const { error } = await supabase
       .from("fastrack_books")
-      .update({ [field]: value })
+      .update({ [field]: value } as any)
       .eq("id", id);
 
     if (error) {
