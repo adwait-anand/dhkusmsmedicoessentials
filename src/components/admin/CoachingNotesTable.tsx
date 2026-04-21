@@ -48,7 +48,7 @@ const CoachingNotesTable = () => {
   const updateField = async (id: string, field: string, value: number | string | boolean) => {
     const { error } = await supabase
       .from("coaching_notes")
-      .update({ [field]: value })
+      .update({ [field]: value } as any)
       .eq("id", id);
 
     if (error) {
