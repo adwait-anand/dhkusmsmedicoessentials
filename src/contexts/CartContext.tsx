@@ -5,8 +5,11 @@ export interface CartItem {
   name: string;
   price?: number;
   quantity: number;
-  category: "fastrack" | "coaching" | "secondhand" | "instrument";
+  category: "fastrack" | "coaching" | "secondhand" | "instrument" | "scrubs";
   coachingName?: string;
+  color?: string;
+  scrubType?: string;
+  size?: string;
 }
 
 interface CartContextType {
