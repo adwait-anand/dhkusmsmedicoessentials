@@ -11,6 +11,7 @@ import HandwrittenNotes from "./pages/HandwrittenNotes";
 import FastrackBooks from "./pages/FastrackBooks";
 import SecondHandBooks from "./pages/SecondHandBooks";
 import MedicalInstruments from "./pages/MedicalInstruments";
+import KnyaScrubs from "./pages/KnyaScrubs";
 import CoachingNotes from "./pages/CoachingNotes";
 import RapidRevisionPrep from "./pages/RapidRevisionPrep";
 import NotFound from "./pages/NotFound";
@@ -34,6 +35,7 @@ const App = () => (
               <Route path="/fastrack-books" element={<FastrackBooks />} />
               <Route path="/second-hand-books" element={<SecondHandBooks />} />
               <Route path="/medical-instruments" element={<MedicalInstruments />} />
+              <Route path="/scrubs" element={<KnyaScrubs />} />
               <Route path="/coaching/:coachingId" element={<CoachingNotes />} />
               <Route path="/rapid-revision" element={<RapidRevisionPrep />} />
               <Route path="/admin/login" element={<AdminLogin />} />

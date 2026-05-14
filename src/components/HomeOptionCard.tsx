@@ -40,6 +40,13 @@ const accentMap: Record<string, { glow: string; bg: string; border: string; text
     text: "text-pink-400",
     hover: "hover:border-pink-500/50",
   },
+  "from-violet-500 to-fuchsia-600": {
+    glow: "rgba(192,132,252,0.18)",
+    bg: "bg-violet-500/15",
+    border: "border-violet-500/30",
+    text: "text-violet-400",
+    hover: "hover:border-violet-500/50",
+  },
 };
 
 const HomeOptionCard = ({ title, description, icon: Icon, to, gradient, index }: HomeOptionCardProps) => {
