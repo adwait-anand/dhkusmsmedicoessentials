@@ -110,6 +110,13 @@ const CartSheet = () => {
                           {item.coachingName}
                         </p>
                       )}
+                      {item.category === "scrubs" && (
+                        <p className="text-xs text-muted-foreground">
+                          {[item.scrubType, item.color, item.size && `Size: ${item.size}`]
+                            .filter(Boolean)
+                            .join(" · ")}
+                        </p>
+                      )}
                       {item.price && (
                         <p className="text-sm text-primary font-semibold">
                           NRS {item.price.toLocaleString()}
