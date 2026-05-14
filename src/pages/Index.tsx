@@ -27,7 +27,7 @@ const Index = () => {
               </p>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
               <HomeOptionCard
                 title="Handwritten Notes"
                 description="Premium notes from 7 top coaching institutes"
@@ -59,6 +59,14 @@ const Index = () => {
                 to="/medical-instruments"
                 gradient="from-rose-500 to-pink-600"
                 index={3}
+              />
+              <HomeOptionCard
+                title="Premium Scrubs"
+                description="Comfortable KNYA scrubs for clinical postings"
+                icon={Shirt}
+                to="/scrubs"
+                gradient="from-violet-500 to-fuchsia-600"
+                index={4}
               />
             </div>
           </div>
