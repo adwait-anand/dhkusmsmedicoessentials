@@ -50,7 +50,14 @@ const CartSheet = () => {
       categoryItems.forEach((item, index) => {
         const priceText = item.price ? ` - NRS ${(item.price * item.quantity).toLocaleString()}` : "";
         const coachingText = item.coachingName ? ` (${item.coachingName})` : "";
-        message += `${index + 1}. ${item.name}${coachingText} x${item.quantity}${priceText}\n`;
+        if (item.category === "scrubs") {
+          const variants = [item.scrubType, item.color, item.size ? `Size: ${item.size}` : null]
+            .filter(Boolean)
+            .join(", ");
+          message += `${index + 1}. ${item.name}${variants ? ` (${variants})` : ""} x${item.quantity}${priceText}\n`;
+        } else {
+          message += `${index + 1}. ${item.name}${coachingText} x${item.quantity}${priceText}\n`;
+        }
       });
       message += "\n";
     });
