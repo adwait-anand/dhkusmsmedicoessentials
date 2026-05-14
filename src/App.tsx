@@ -11,6 +11,7 @@ import HandwrittenNotes from "./pages/HandwrittenNotes";
 import FastrackBooks from "./pages/FastrackBooks";
 import SecondHandBooks from "./pages/SecondHandBooks";
 import MedicalInstruments from "./pages/MedicalInstruments";
+import KnyaScrubs from "./pages/KnyaScrubs";
 import CoachingNotes from "./pages/CoachingNotes";
 import RapidRevisionPrep from "./pages/RapidRevisionPrep";
 import NotFound from "./pages/NotFound";
