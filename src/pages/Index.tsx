@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import HomeOptionCard from "@/components/HomeOptionCard";
 import Footer from "@/components/Footer";
-import { NotebookPen, BookOpen, BookMarked, Stethoscope, MapPin, Clock, Phone, Navigation } from "lucide-react";
+import { NotebookPen, BookOpen, BookMarked, Stethoscope, Shirt, MapPin, Clock, Phone, Navigation } from "lucide-react";
 
 const Index = () => {
   return (
