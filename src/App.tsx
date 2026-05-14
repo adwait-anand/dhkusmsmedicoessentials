@@ -35,6 +35,7 @@ const App = () => (
               <Route path="/fastrack-books" element={<FastrackBooks />} />
               <Route path="/second-hand-books" element={<SecondHandBooks />} />
               <Route path="/medical-instruments" element={<MedicalInstruments />} />
+              <Route path="/scrubs" element={<KnyaScrubs />} />
               <Route path="/coaching/:coachingId" element={<CoachingNotes />} />
               <Route path="/rapid-revision" element={<RapidRevisionPrep />} />
               <Route path="/admin/login" element={<AdminLogin />} />
