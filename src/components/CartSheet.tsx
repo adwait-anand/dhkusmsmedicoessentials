@@ -32,6 +32,7 @@ const CartSheet = () => {
       coaching: "📝 Handwritten Notes",
       secondhand: "📖 Second Hand Books",
       instrument: "🩺 Medical Instruments",
+      scrubs: "👕 Premium Scrubs",
     };
 
     // Group items by category
