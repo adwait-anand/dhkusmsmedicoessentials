@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import SEO from "@/components/SEO";
 import HeroSection from "@/components/HeroSection";
 import HomeOptionCard from "@/components/HomeOptionCard";
 import Footer from "@/components/Footer";
@@ -7,6 +8,7 @@ import { NotebookPen, BookOpen, BookMarked, Stethoscope, Shirt, MapPin, Clock, P
 const Index = () => {
   return (
     <div className="min-h-screen bg-background mesh-bg">
+      <SEO title="DH-KUSMS Medico Essentials — Notes, Books & Instruments" description="Premium handwritten notes, MBBS FastTrack books, KNYA scrubs, and medical instruments at DH-KUSMS Medico Essentials in Dhulikhel, Nepal." path="/" />
       <Header />
 
       <main>

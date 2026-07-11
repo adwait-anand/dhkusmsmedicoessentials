@@ -51,6 +51,7 @@ const FastrackBooks = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO title="MBBS FastTrack Books — DH-KUSMS Medico Essentials" description="Quick revision FastTrack books covering all MBBS years — anatomy, physiology, pathology and more for exam-ready students in Nepal." path="/fastrack-books" />
       <Header />
 
       <main>

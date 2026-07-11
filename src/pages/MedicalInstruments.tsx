@@ -37,6 +37,7 @@ const MedicalInstruments = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO title="Medical Instruments — DH-KUSMS Medico Essentials" description="Stethoscopes, BP apparatus, and essential clinical instruments for MBBS students — sourced and priced for Nepali medical trainees." path="/medical-instruments" />
       <Header />
 
       {/* Hero Section */}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SEO from "@/components/SEO";
 import { Check, ShoppingCart, Shirt } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -45,6 +46,7 @@ const KnyaScrubs = () => {
 
   return (
     <div className="min-h-screen bg-background mesh-bg">
+      <SEO title="KNYA Premium Scrubs — DH-KUSMS Medico Essentials" description="Comfortable KNYA scrubs for clinical postings — choose your style, color, and size. Delivered across Nepal from DH-KUSMS Medico Essentials." path="/scrubs" />
       <Header />
 
       <main>

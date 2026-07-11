@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SEO from "@/components/SEO";
 import { Link } from "react-router-dom";
 import { ArrowLeft, X, BookMarked, ShoppingCart, Check } from "lucide-react";
 import Header from "@/components/Header";
@@ -96,6 +97,7 @@ const SecondHandBooks = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO title="Second Hand Medical Books — DH-KUSMS Medico Essentials" description="Quality used MBBS textbooks at affordable prices — buy or sell pre-owned medical books through DH-KUSMS Medico Essentials." path="/second-hand-books" />
       <Header />
 
       <main>

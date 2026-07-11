@@ -67,6 +67,7 @@ const RapidRevisionPrep = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO title="Rapid Revision Prep Notes — DH-KUSMS Medico Essentials" description="Last-minute rapid revision notes for MBBS university and NEET PG / FMGE / NMCLE exams — high-yield, exam-focused content." path="/rapid-revision" />
       <Header />
       <main>
         {/* Hero */}
