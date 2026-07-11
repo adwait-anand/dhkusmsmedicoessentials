@@ -83,6 +83,7 @@ const FastrackBooks = () => {
 
         <section className="py-12 md:py-16">
           <div className="container mx-auto px-4">
+            <h2 className="mb-8 font-display text-2xl font-bold text-foreground md:text-3xl">Available FastTrack Books</h2>
             {loading ? (
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 {Array.from({ length: 4 }).map((_, i) => (
