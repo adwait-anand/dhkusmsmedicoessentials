@@ -1,0 +1,13 @@
+# DH-KUSMS Medico Essentials
+
+> Medical study materials and instruments shop at Dhulikhel Hospital, Nepal — serving MBBS and NEET PG students with handwritten notes, FastTrack books, KNYA scrubs, and clinical instruments.
+
+## Pages
+
+- [Home](/): Browse all categories — notes, books, instruments, scrubs.
+- [Handwritten Notes](/handwritten-notes): Premium notes from 7 top NEET PG coaching institutes.
+- [MBBS FastTrack Books](/fastrack-books): Quick revision books for all MBBS years.
+- [Second Hand Books](/second-hand-books): Quality used medical textbooks at affordable prices.
+- [Medical Instruments](/medical-instruments): Stethoscopes, BP apparatus, and essential clinical tools.
+- [KNYA Scrubs](/scrubs): Premium scrubs — pick type, color, and size.
+- [Rapid Revision Prep](/rapid-revision): Last-minute revision notes for university and licensing exams.
