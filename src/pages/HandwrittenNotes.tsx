@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import SEO from "@/components/SEO";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SubjectSearch from "@/components/SubjectSearch";
@@ -68,6 +69,7 @@ const HandwrittenNotes = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO title="Handwritten Notes — DH-KUSMS Medico Essentials" description="Premium handwritten notes from 7 top NEET PG coaching institutes — Marrow, DAMS, eGurukul and more, curated for MBBS and FMGE aspirants." path="/handwritten-notes" />
       <Header />
 
       <main>
