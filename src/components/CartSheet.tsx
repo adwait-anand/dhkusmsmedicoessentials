@@ -51,7 +51,7 @@ const CartSheet = () => {
         const priceText = item.price ? ` - NRS ${(item.price * item.quantity).toLocaleString()}` : "";
         const coachingText = item.coachingName ? ` (${item.coachingName})` : "";
         if (item.category === "scrubs") {
-          const variants = [item.scrubType, item.color, item.size ? `Size: ${item.size}` : null]
+          const variants = [item.gender, item.scrubType, item.color, item.size ? `Size: ${item.size}` : null]
             .filter(Boolean)
             .join(", ");
           message += `${index + 1}. ${item.name}${variants ? ` (${variants})` : ""} x${item.quantity}${priceText}\n`;
@@ -112,7 +112,7 @@ const CartSheet = () => {
                       )}
                       {item.category === "scrubs" && (
                         <p className="text-xs text-muted-foreground">
-                          {[item.scrubType, item.color, item.size && `Size: ${item.size}`]
+                          {[item.gender, item.scrubType, item.color, item.size && `Size: ${item.size}`]
                             .filter(Boolean)
                             .join(" · ")}
                         </p>

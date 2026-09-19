@@ -10,6 +10,7 @@ export interface CartItem {
   color?: string;
   scrubType?: string;
   size?: string;
+  gender?: "Men's" | "Women's";
 }
 
 interface CartContextType {
