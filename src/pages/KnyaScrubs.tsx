@@ -14,7 +14,7 @@ import {
   SCRUB_BASE_PRICE,
   type ScrubGender,
 } from "@/data/scrubs";
-import knyaLogo from "@/assets/brand/knya-med-original.webp.asset.json";
+import knyaLogo from "@/assets/brand/knya-med-original.webp";
 
 const KnyaScrubs = () => {
   const { addItem, setIsCartOpen } = useCart();
@@ -70,7 +70,7 @@ const KnyaScrubs = () => {
 
           <div className="container relative z-10 mx-auto px-4 lg:px-6">
             <div className="max-w-3xl">
-              <img src={knyaLogo.url} alt="KNYA" className="mb-7 h-12 w-auto rounded border border-border/50" width={250} height={80} />
+              <img src={knyaLogo} alt="KNYA" className="mb-7 h-12 w-auto rounded border border-border/50" width={250} height={80} />
               <div className="mb-5 inline-flex items-center gap-2 rounded-full glass border border-violet-500/30 px-4 py-1.5">
                 <Shirt className="h-4 w-4 text-violet-400" />
                 <span className="text-xs font-display font-bold tracking-[0.2em] uppercase text-violet-300">
