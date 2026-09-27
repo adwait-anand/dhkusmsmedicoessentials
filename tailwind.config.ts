@@ -43,6 +43,14 @@ export default {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
+        ticker: {
+          DEFAULT: "hsl(var(--ticker))",
+          foreground: "hsl(var(--ticker-foreground))",
+        },
+        carousel: {
+          overlay: "hsl(var(--carousel-overlay))",
+          foreground: "hsl(var(--carousel-foreground))",
+        },
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",

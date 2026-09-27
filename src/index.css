@@ -27,6 +27,11 @@
     --accent: 28 100% 65%;
     --accent-foreground: 28 100% 12%;
 
+    --ticker: 49 100% 55%;
+    --ticker-foreground: 180 100% 5%;
+    --carousel-overlay: 180 100% 3% / 0.82;
+    --carousel-foreground: 0 0% 100%;
+
     --destructive: 2 100% 71%;
     --destructive-foreground: 0 100% 18%;
 
@@ -72,10 +77,27 @@
     --muted-foreground: 195 20% 40%;
     --accent: 28 90% 50%;
     --accent-foreground: 0 0% 100%;
+    --ticker: 49 100% 55%;
+    --ticker-foreground: 195 100% 10%;
+    --carousel-overlay: 195 100% 5% / 0.78;
+    --carousel-foreground: 0 0% 100%;
     --border: 180 25% 85%;
     --input: 180 25% 85%;
     --ring: 192 90% 38%;
   }
+}
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.ticker-track {
+  animation: ticker-scroll 22s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track { animation-play-state: paused; }
 }
 
 @layer base {
