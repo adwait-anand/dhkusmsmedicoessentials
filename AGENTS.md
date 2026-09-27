@@ -1,3 +1,3 @@
 # Project architecture rules
 
-- Homepage campaign media must be stored as Lovable asset pointers and imported through their `.asset.json` files, keeping large binaries out of the source tree.
+- Homepage campaign media is bundled from `src/assets/home` because the asset-proxy route returns the app shell instead of image bytes in this project preview.

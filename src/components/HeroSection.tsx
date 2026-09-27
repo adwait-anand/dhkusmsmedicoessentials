@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import scrubsBanner from "@/assets/home/scrubs-banner.webp.asset.json";
-import notesBanner from "@/assets/home/notes-banner.png.asset.json";
-import booksBanner from "@/assets/home/books-banner.png.asset.json";
+import scrubsBanner from "@/assets/home/scrubs-banner.webp";
+import notesBanner from "@/assets/home/notes-banner.png";
+import booksBanner from "@/assets/home/books-banner.png";
 
 const slides = [
-  { image: scrubsBanner.url, alt: "Medical professionals wearing premium KNYA scrubs", headline: "Ready for every round", to: "/scrubs" },
-  { image: notesBanner.url, alt: "Color printed PrepLadder and Marrow medical notes", headline: "Notes built for better results", to: "/handwritten-notes" },
-  { image: booksBanner.url, alt: "FastTrack and standard MBBS medical books", headline: "Everything for your next exam", to: "/fastrack-books" },
+  { image: scrubsBanner, alt: "Medical professionals wearing premium KNYA scrubs", headline: "Ready for every round", to: "/scrubs" },
+  { image: notesBanner, alt: "Color printed PrepLadder and Marrow medical notes", headline: "Notes built for better results", to: "/handwritten-notes" },
+  { image: booksBanner, alt: "FastTrack and standard MBBS medical books", headline: "Everything for your next exam", to: "/fastrack-books" },
 ];
 
 const tickerItems = ["PREMIUM NOTES", "SCRUBS", "FASTTRACK BOOKS", "CLINICAL MANUALS", "INSTRUMENTS"];

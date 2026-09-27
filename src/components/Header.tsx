@@ -9,7 +9,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "./ui/sheet";
-import logoAsset from "@/assets/home/dh-kusms-logo.ico.asset.json";
+import logo from "@/assets/home/dh-kusms-logo.ico";
 
 const navigation = [
   { label: "Home", to: "/" },
@@ -58,7 +58,7 @@ const Header = () => {
           className="group absolute left-1/2 flex max-w-[58vw] -translate-x-1/2 items-center gap-2 text-center md:gap-3"
           aria-label="DH-KUSMS Medico Essentials home"
         >
-          <img src={logoAsset.url} alt="" className="h-9 w-9 shrink-0 object-contain md:h-11 md:w-11" />
+          <img src={logo} alt="" className="h-9 w-9 shrink-0 object-contain md:h-11 md:w-11" />
           <span className="min-w-0 text-left">
             <span className="block truncate font-display text-xs font-black uppercase leading-tight text-foreground md:text-base">DH-KUSMS</span>
             <span className="block truncate text-[8px] font-semibold uppercase leading-tight text-muted-foreground md:text-[10px]">Medico Essentials</span>
