@@ -10,42 +10,37 @@ interface HomeOptionCardProps {
   index: number;
 }
 
-// Map gradient prop to themed accent color classes
-const accentMap: Record<string, { glow: string; bg: string; border: string; text: string; hover: string }> = {
+// Keep category distinctions inside the carousel-derived clinical palette.
+const accentMap: Record<string, { bg: string; border: string; text: string; hover: string }> = {
   "from-blue-500 to-indigo-600": {
-    glow: "rgba(109,221,255,0.15)",
     bg: "bg-primary/15",
     border: "border-primary/30",
     text: "text-primary",
     hover: "hover:border-primary/50",
   },
   "from-emerald-500 to-teal-600": {
-    glow: "rgba(0,200,150,0.15)",
-    bg: "bg-emerald-500/15",
-    border: "border-emerald-500/30",
-    text: "text-emerald-400",
-    hover: "hover:border-emerald-500/50",
+    bg: "bg-primary/10",
+    border: "border-primary/25",
+    text: "text-primary",
+    hover: "hover:border-primary/50",
   },
   "from-amber-500 to-orange-600": {
-    glow: "rgba(255,159,77,0.15)",
     bg: "bg-accent/15",
     border: "border-accent/30",
     text: "text-accent",
     hover: "hover:border-accent/50",
   },
   "from-rose-500 to-pink-600": {
-    glow: "rgba(255,107,152,0.15)",
-    bg: "bg-pink-500/15",
-    border: "border-pink-500/30",
-    text: "text-pink-400",
-    hover: "hover:border-pink-500/50",
+    bg: "bg-primary/15",
+    border: "border-primary/30",
+    text: "text-primary",
+    hover: "hover:border-primary/50",
   },
   "from-violet-500 to-fuchsia-600": {
-    glow: "rgba(192,132,252,0.18)",
-    bg: "bg-violet-500/15",
-    border: "border-violet-500/30",
-    text: "text-violet-400",
-    hover: "hover:border-violet-500/50",
+    bg: "bg-accent/15",
+    border: "border-accent/30",
+    text: "text-accent",
+    hover: "hover:border-accent/50",
   },
 };
 
@@ -61,14 +56,7 @@ const HomeOptionCard = ({ title, description, icon: Icon, to, gradient, index }:
         boxShadow: `0 0 0 transparent`,
       }}
     >
-      {/* Hover glow */}
-      <div
-        className="absolute -top-20 -right-20 h-64 w-64 rounded-full blur-[80px] opacity-50 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
-        style={{ background: accent.glow }}
-      />
-
-      {/* Subtle gradient overlay */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-[0.06] z-0`} />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/5 opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
 
       <div className="relative z-10 flex h-full flex-col justify-between p-7 md:p-9">
         <div
