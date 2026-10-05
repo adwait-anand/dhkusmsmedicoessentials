@@ -7,9 +7,9 @@ import notesBanner from "@/assets/home/notes-banner.png";
 import booksBanner from "@/assets/home/books-banner.png";
 
 const slides = [
-  { image: scrubsBanner, alt: "Medical professionals wearing premium KNYA scrubs", headline: "Ready for every round", ratio: "1500 / 586", to: "/scrubs" },
-  { image: notesBanner, alt: "Color printed PrepLadder and Marrow medical notes", headline: "Notes built for better results", ratio: "1672 / 941", to: "/handwritten-notes" },
-  { image: booksBanner, alt: "FastTrack and standard MBBS medical books", headline: "Everything for your next exam", ratio: "1672 / 941", to: "/fastrack-books" },
+  { image: scrubsBanner, alt: "Medical professionals wearing premium KNYA scrubs", headline: "Ready for every round", to: "/scrubs" },
+  { image: notesBanner, alt: "Color printed PrepLadder and Marrow medical notes", headline: "Notes built for better results", to: "/handwritten-notes" },
+  { image: booksBanner, alt: "FastTrack and standard MBBS medical books", headline: "Everything for your next exam", to: "/fastrack-books" },
 ];
 
 const tickerItems = ["PREMIUM NOTES", "SCRUBS", "FASTTRACK BOOKS", "CLINICAL MANUALS", "INSTRUMENTS"];
@@ -34,7 +34,7 @@ const HeroSection = () => {
   return (
     <section aria-label="Featured collections" className="bg-background">
       <div className="group relative mx-auto w-full max-w-[1600px] overflow-hidden bg-muted">
-        <div className="relative w-full" style={{ aspectRatio: slides[activeSlide].ratio }}>
+        <div className="relative aspect-[16/9] w-full">
           {slides.map((slide, index) => (
             <img
               key={slide.image}
@@ -46,6 +46,8 @@ const HeroSection = () => {
             />
           ))}
           <div className="absolute inset-x-0 bottom-0 hidden h-1/3 bg-gradient-to-t md:block from-carousel-overlay to-transparent" />
+
+        </div>
 
           <div className="relative z-10 flex flex-col items-center border-t border-border bg-background px-4 py-4 text-center md:absolute md:inset-x-4 md:bottom-10 md:border-0 md:bg-transparent md:p-0">
             <h1 className="max-w-3xl font-display text-lg font-bold leading-tight text-foreground md:text-2xl md:text-carousel-foreground md:drop-shadow-lg lg:text-3xl">
@@ -76,7 +78,6 @@ const HeroSection = () => {
               />
             ))}
           </div>
-        </div>
       </div>
 
       <div className="ticker-shell overflow-hidden border-y border-primary/20 bg-ticker py-3 text-ticker-foreground" aria-label={tickerItems.join(", ")}>

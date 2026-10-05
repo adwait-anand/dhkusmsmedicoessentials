@@ -64,20 +64,17 @@ const KnyaScrubs = () => {
       <main>
         {/* Hero */}
         <section className="relative overflow-hidden py-20 md:py-28">
-          <div className="absolute inset-0 bg-gradient-to-br from-violet-500/20 via-fuchsia-600/10 to-transparent" />
-          <div className="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-violet-500/20 blur-[120px] pointer-events-none" />
-          <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-fuchsia-600/20 blur-[120px] pointer-events-none" />
 
           <div className="container relative z-10 mx-auto px-4 lg:px-6">
             <div className="max-w-3xl">
               <img src={knyaLogo} alt="KNYA" className="mb-7 h-12 w-auto rounded border border-border/50" width={250} height={80} />
-              <div className="mb-5 inline-flex items-center gap-2 rounded-full glass border border-violet-500/30 px-4 py-1.5">
-                <Shirt className="h-4 w-4 text-violet-400" />
-                <span className="text-xs font-display font-bold tracking-[0.2em] uppercase text-violet-300">
+              <div className="mb-5 inline-flex items-center gap-2 rounded-full glass border border-primary/30 px-4 py-1.5">
+                <Shirt className="h-4 w-4 text-accent" />
+                <span className="text-xs font-display font-bold tracking-[0.2em] uppercase text-accent">
                   New Arrival
                 </span>
               </div>
-              <h1 className="font-display text-4xl md:text-6xl font-black tracking-tighter bg-gradient-to-r from-violet-400 via-fuchsia-400 to-pink-400 bg-clip-text text-transparent">
+              <h1 className="font-display text-4xl md:text-6xl font-black tracking-tighter text-foreground">
                 Premium KNYA Scrubs
               </h1>
               <p className="mt-5 text-lg text-muted-foreground max-w-2xl">
@@ -121,14 +118,14 @@ const KnyaScrubs = () => {
                 <div>
                   <div className="mb-4 flex items-center justify-between">
                     <h2 className="font-display text-xl font-bold text-foreground">1. Choose Gender</h2>
-                    {selectedGender && <span className="text-xs font-medium text-violet-400">{selectedGender}</span>}
+                    {selectedGender && <span className="text-xs font-medium text-accent">{selectedGender}</span>}
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     {scrubGenders.map((gender) => (
-                      <Button key={gender} type="button" variant="outline" onClick={() => handleGenderChange(gender)} className={`h-14 justify-start gap-3 ${selectedGender === gender ? "border-violet-500 bg-violet-500/10" : "border-border/50 bg-card/40"}`}>
+                      <Button key={gender} type="button" variant="outline" onClick={() => handleGenderChange(gender)} className={`h-14 justify-start gap-3 ${selectedGender === gender ? "border-primary bg-primary/10" : "border-border/50 bg-card/40"}`}>
                         <UserRound className="h-5 w-5" />
                         {gender}
-                        {selectedGender === gender && <Check className="ml-auto h-4 w-4 text-violet-400" />}
+                        {selectedGender === gender && <Check className="ml-auto h-4 w-4 text-accent" />}
                       </Button>
                     ))}
                   </div>
@@ -141,7 +138,7 @@ const KnyaScrubs = () => {
                        2. Choose Type
                     </h2>
                     {selectedType && (
-                      <span className="text-xs text-violet-400 font-medium">
+                      <span className="text-xs text-accent font-medium">
                         {selectedType}
                       </span>
                     )}
@@ -157,12 +154,12 @@ const KnyaScrubs = () => {
                           onClick={() => setSelectedType(type)}
                           className={`relative h-auto justify-start rounded-lg border p-4 text-left transition-all duration-300 ${
                             active
-                              ? "border-violet-500 bg-violet-500/10 shadow-glow-soft"
-                              : "border-border/50 bg-card/40 hover:border-violet-500/40 hover:bg-card/60"
+                              ? "border-primary bg-primary/10 shadow-glow-soft"
+                              : "border-border/50 bg-card/40 hover:border-primary/40 hover:bg-card/60"
                           }`}
                         >
                           {active && (
-                            <div className="absolute top-3 right-3 h-5 w-5 rounded-full bg-violet-500 flex items-center justify-center">
+                            <div className="absolute top-3 right-3 h-5 w-5 rounded-full bg-primary flex items-center justify-center">
                               <Check className="h-3 w-3 text-primary-foreground" />
                             </div>
                           )}
@@ -182,7 +179,7 @@ const KnyaScrubs = () => {
                        3. Choose Color
                     </h2>
                     {selectedColor && (
-                      <span className="text-xs text-violet-400 font-medium">
+                      <span className="text-xs text-accent font-medium">
                         {selectedColor}
                       </span>
                     )}
@@ -199,7 +196,7 @@ const KnyaScrubs = () => {
                           title={color.name}
                           className={`group relative h-12 w-12 rounded-full p-0 transition-all duration-300 ${
                             active
-                              ? "ring-2 ring-violet-400 ring-offset-4 ring-offset-background scale-110"
+                              ? "ring-2 ring-ring ring-offset-4 ring-offset-background scale-110"
                               : "ring-1 ring-border/50 hover:scale-105"
                           }`}
                           style={{ backgroundColor: color.hex }}
@@ -222,7 +219,7 @@ const KnyaScrubs = () => {
                        4. Choose Size
                     </h2>
                     {selectedSize && (
-                      <span className="text-xs text-violet-400 font-medium">
+                      <span className="text-xs text-accent font-medium">
                         Size {selectedSize}
                       </span>
                     )}
@@ -238,8 +235,8 @@ const KnyaScrubs = () => {
                           onClick={() => setSelectedSize(size)}
                           className={`min-w-[56px] rounded-full border px-5 py-2.5 font-display font-bold text-sm transition-all duration-300 ${
                             active
-                               ? "border-violet-500 bg-violet-500 text-primary-foreground shadow-glow-soft"
-                              : "border-border/60 bg-card/40 text-foreground hover:border-violet-500/50"
+                               ? "border-primary bg-primary text-primary-foreground shadow-glow-soft"
+                              : "border-border/60 bg-card/40 text-foreground hover:border-primary/50"
                           }`}
                         >
                           {size}
@@ -263,7 +260,7 @@ const KnyaScrubs = () => {
                     onClick={handleAddToCart}
                     disabled={!canAdd}
                     size="lg"
-                     className="gap-2 bg-gradient-to-r from-violet-500 to-fuchsia-600 hover:opacity-90 text-primary-foreground disabled:opacity-40 disabled:cursor-not-allowed"
+                     className="gap-2 bg-primary hover:opacity-90 text-primary-foreground disabled:opacity-40 disabled:cursor-not-allowed"
                   >
                     <ShoppingCart className="h-5 w-5" />
                     {canAdd ? "Add to Cart" : "Select all options"}
