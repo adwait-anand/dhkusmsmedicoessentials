@@ -2,16 +2,16 @@ import { BookOpen, Mail, Phone, MapPin } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="border-t border-border/30 bg-card/30 backdrop-blur-sm relative">
+    <footer className="border-t border-border bg-background relative">
       <div className="container mx-auto px-4 lg:px-6 py-12">
         <div className="grid gap-8 md:grid-cols-4">
           <div className="md:col-span-1">
             <div className="mb-4 flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl gradient-button text-primary-foreground shadow-glow-soft">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg gradient-button text-primary-foreground shadow-glow-soft">
                 <BookOpen className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="font-display text-base font-black text-primary tracking-tighter uppercase">
+                <h3 className="font-display text-base font-black text-foreground tracking-tighter uppercase">
                   DH-KUSMS
                 </h3>
                 <p className="text-[10px] text-muted-foreground tracking-widest uppercase">Medico Essentials</p>

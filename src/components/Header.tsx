@@ -28,7 +28,7 @@ const Header = () => {
       <div className="flex min-h-7 items-center justify-center bg-primary px-4 py-1 text-center text-[10px] font-bold uppercase leading-4 text-primary-foreground md:text-xs">
         All in one Place for Medical Essential Needs- SCRUBS | FASTTRACKS- MBBS_PG Printed Notes | Delivery all over Nepal |
       </div>
-      <div className="relative flex h-16 w-full items-center justify-between border-b border-border/50 bg-background/95 px-3 backdrop-blur-xl md:h-[72px] md:px-6">
+      <div className="relative flex h-16 w-full items-center justify-between border-b border-border bg-background px-3 backdrop-blur-xl md:h-[72px] md:px-6">
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="ghost" size="icon" aria-label="Open menu" className="shrink-0">
@@ -60,8 +60,8 @@ const Header = () => {
         >
           <img src={logo} alt="" className="h-9 w-9 shrink-0 object-contain md:h-11 md:w-11" />
           <span className="min-w-0 text-left">
-            <span className="block truncate font-display text-xs font-black uppercase leading-tight text-foreground md:text-base">DH-KUSMS</span>
-            <span className="block truncate text-[8px] font-semibold uppercase leading-tight text-muted-foreground md:text-[10px]">Medico Essentials</span>
+            <span className="block truncate font-display text-xs font-bold uppercase leading-tight text-foreground md:text-base">DH-KUSMS</span>
+            <span className="block truncate text-[8px] font-semibold uppercase leading-tight text-accent md:text-[10px]">Medico Essentials</span>
           </span>
         </Link>
 

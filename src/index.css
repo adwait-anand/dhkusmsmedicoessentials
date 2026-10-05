@@ -2,88 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
 
 @layer base {
-  :root {
-    --background: 190 66% 9%;
-    --foreground: 185 43% 92%;
-
-    --card: 188 55% 13%;
-    --card-foreground: 185 43% 92%;
-
-    --popover: 190 58% 11%;
-    --popover-foreground: 185 43% 92%;
-
-    --primary: 185 67% 48%;
-    --primary-foreground: 191 75% 10%;
-
-    --secondary: 188 50% 17%;
-    --secondary-foreground: 185 43% 92%;
-
-    --muted: 189 43% 18%;
-    --muted-foreground: 184 24% 68%;
-
-    --accent: 199 78% 66%;
-    --accent-foreground: 201 75% 12%;
-
-    --ticker: 174 62% 40%;
-    --ticker-foreground: 0 0% 100%;
-    --carousel-overlay: 193 75% 9% / 0.84;
-    --carousel-foreground: 0 0% 100%;
-
-    --destructive: 2 100% 71%;
-    --destructive-foreground: 0 100% 18%;
-
-    --border: 187 33% 27%;
-    --input: 187 33% 27%;
-    --ring: 185 67% 48%;
-
-    --radius: 1rem;
-
-    --gradient-hero: radial-gradient(ellipse at top right, hsl(190 56% 22%) 0%, hsl(190 66% 9%) 62%);
-    --gradient-card: linear-gradient(145deg, hsl(186 48% 23% / 0.52) 0%, hsl(190 55% 12% / 0.68) 100%);
-    --gradient-text: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(184 68% 76%) 48%, hsl(185 67% 48%) 100%);
-    --gradient-button: linear-gradient(135deg, hsl(184 65% 56%) 0%, hsl(190 78% 61%) 100%);
-
-    --shadow-card: 0 4px 24px -4px hsl(0 0% 0% / 0.5);
-    --shadow-card-hover: 0 20px 60px -12px hsl(185 67% 48% / 0.22);
-    --shadow-glow-primary: 0 0 30px hsl(185 67% 48% / 0.36);
-    --shadow-glow-soft: 0 0 40px hsl(185 67% 48% / 0.12);
-    --shadow-nav: 0 10px 40px hsl(191 75% 5% / 0.24);
-
-    --sidebar-background: 190 66% 9%;
-    --sidebar-foreground: 185 43% 92%;
-    --sidebar-primary: 185 67% 48%;
-    --sidebar-primary-foreground: 191 75% 10%;
-    --sidebar-accent: 188 50% 17%;
-    --sidebar-accent-foreground: 185 43% 92%;
-    --sidebar-border: 187 33% 27%;
-    --sidebar-ring: 185 67% 48%;
-  }
-
-  .light {
-    --background: 180 30% 97%;
-    --foreground: 195 100% 12%;
+  :root, .light {
+    --background: 0 0% 100%;
+    --foreground: 220 22% 14%;
     --card: 0 0% 100%;
-    --card-foreground: 195 100% 12%;
+    --card-foreground: 220 22% 14%;
     --popover: 0 0% 100%;
-    --popover-foreground: 195 100% 12%;
-    --primary: 192 90% 38%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 180 30% 92%;
-    --secondary-foreground: 195 100% 18%;
-    --muted: 180 20% 90%;
-    --muted-foreground: 195 20% 40%;
-    --accent: 28 90% 50%;
+    --popover-foreground: 220 22% 14%;
+    --primary: 84 81% 44%;
+    --primary-foreground: 100 45% 10%;
+    --secondary: 80 40% 96%;
+    --secondary-foreground: 100 45% 22%;
+    --muted: 210 20% 97%;
+    --muted-foreground: 215 13% 40%;
+    --accent: 100 65% 28%;
     --accent-foreground: 0 0% 100%;
-    --ticker: 174 62% 40%;
-    --ticker-foreground: 0 0% 100%;
-    --carousel-overlay: 195 100% 5% / 0.78;
+    --ticker: 80 65% 95%;
+    --ticker-foreground: 100 65% 24%;
+    --carousel-overlay: 220 22% 14% / 0.6;
     --carousel-foreground: 0 0% 100%;
-    --border: 180 25% 85%;
-    --input: 180 25% 85%;
-    --ring: 192 90% 38%;
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 18% 89%;
+    --input: 210 18% 86%;
+    --ring: 84 81% 44%;
+    --radius: 0.5rem;
+    --gradient-hero: linear-gradient(hsl(var(--background)), hsl(var(--background)));
+    --gradient-card: linear-gradient(hsl(var(--card)), hsl(var(--card)));
+    --gradient-text: linear-gradient(hsl(var(--foreground)), hsl(var(--foreground)));
+    --gradient-button: linear-gradient(hsl(var(--primary)), hsl(var(--primary)));
+    --shadow-card: 0 2px 10px hsl(220 22% 14% / 0.04);
+    --shadow-card-hover: 0 8px 24px hsl(220 22% 14% / 0.08);
+    --shadow-glow-primary: 0 4px 12px hsl(100 45% 22% / 0.08);
+    --shadow-glow-soft: 0 2px 8px hsl(220 22% 14% / 0.04);
+    --shadow-nav: 0 1px 6px hsl(220 22% 14% / 0.04);
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 22% 14%;
+    --sidebar-primary: 84 81% 44%;
+    --sidebar-primary-foreground: 100 45% 10%;
+    --sidebar-accent: 80 40% 96%;
+    --sidebar-accent-foreground: 100 45% 22%;
+    --sidebar-border: 210 18% 89%;
+    --sidebar-ring: 84 81% 44%;
   }
 }
 
@@ -107,20 +70,20 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
-    background-image: radial-gradient(circle at top right, hsl(190 56% 22%) 0%, hsl(190 66% 9%) 62%);
+    background-image: none;
     background-attachment: fixed;
     min-height: 100vh;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Epilogue', sans-serif;
-    letter-spacing: -0.025em;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0;
   }
 }
 
 @layer utilities {
   .font-display {
-    font-family: 'Epilogue', sans-serif;
+    font-family: 'Inter', sans-serif;
   }
 
   .font-body {
@@ -167,13 +130,13 @@
   }
 
   .glass {
-    background: hsl(var(--card) / 0.4);
+    background: hsl(var(--card));
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
   }
 
   .glass-strong {
-    background: hsl(var(--card) / 0.6);
+    background: hsl(var(--card));
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
   }
@@ -191,11 +154,7 @@
   }
 
   .mesh-bg {
-    background-image:
-      radial-gradient(at 40% 20%, hsl(185 67% 48% / 0.11) 0px, transparent 50%),
-      radial-gradient(at 80% 0%, hsl(199 78% 66% / 0.08) 0px, transparent 50%),
-      radial-gradient(at 0% 50%, hsl(174 62% 40% / 0.08) 0px, transparent 50%),
-      radial-gradient(at 80% 80%, hsl(212 72% 63% / 0.05) 0px, transparent 50%);
+    background-image: none;
   }
 
   .grid-pattern {
@@ -222,3 +181,6 @@
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--primary) / 0.5);
 }
+
+/* Keep text hierarchy crisp across existing storefront pages. */
+[class*="tracking-"] { letter-spacing: 0; }
