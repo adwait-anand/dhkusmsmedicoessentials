@@ -3,6 +3,7 @@ import SEO from "@/components/SEO";
 import HeroSection from "@/components/HeroSection";
 import HomeOptionCard from "@/components/HomeOptionCard";
 import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
 import { NotebookPen, BookOpen, BookMarked, Stethoscope, Shirt, MapPin, Clock, Phone, Navigation } from "lucide-react";
 
 const Index = () => {
@@ -14,22 +15,21 @@ const Index = () => {
       <main>
         <HeroSection />
 
-        <section id="categories" className="py-16 md:py-24 relative">
+        <section id="categories" className="py-10 md:py-14 relative">
           <div className="container mx-auto px-4 lg:px-6">
-            <div className="mb-14 max-w-3xl">
-              <p className="mb-3 text-xs font-display font-bold tracking-[0.25em] uppercase text-primary">
+            <div className="mb-7 max-w-3xl">
+              <p className="mb-3 text-xs font-display font-bold tracking-[0.25em] uppercase text-accent">
                 Browse Categories
               </p>
-              <h2 className="font-display text-4xl md:text-5xl font-black text-foreground tracking-tighter relative inline-block">
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground tracking-tighter relative inline-block">
                 What Are You Looking For?
-                <span className="absolute -bottom-3 left-0 w-1/2 h-1 bg-gradient-to-r from-primary to-transparent rounded-full" />
               </h2>
-              <p className="mt-6 text-muted-foreground leading-relaxed max-w-2xl">
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-2xl">
                 Choose from our premium collection of handwritten notes, MBBS FastTrack books, second hand textbooks, or medical instruments.
               </p>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5">
               <HomeOptionCard
                 title="Handwritten Notes"
                 description="Premium notes from 7 top coaching institutes"
@@ -75,19 +75,17 @@ const Index = () => {
         </section>
 
         {/* Visit Our Shop */}
-        <section className="py-16 md:py-24 relative">
+        <section className="border-t border-border bg-muted py-10 md:py-14 relative">
           <div className="container mx-auto px-4 lg:px-6">
-            <div className="rounded-3xl border border-border/40 glass p-6 md:p-10 lg:p-12 relative overflow-hidden">
-              <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-primary/5 blur-[100px] pointer-events-none" />
-              <div className="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-accent/5 blur-[100px] pointer-events-none" />
+            <div className="relative">
 
               <div className="grid lg:grid-cols-3 gap-10 lg:gap-12 relative z-10">
                 <div className="lg:col-span-1 space-y-6">
                   <div>
-                    <p className="mb-3 text-xs font-display font-bold tracking-[0.25em] uppercase text-primary">
+                    <p className="mb-3 text-xs font-display font-bold tracking-[0.25em] uppercase text-accent">
                       Find Us
                     </p>
-                    <h2 className="font-display text-3xl md:text-4xl font-black text-foreground tracking-tighter">
+                    <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground tracking-tighter">
                       Visit Our Shop
                     </h2>
                   </div>
@@ -107,19 +105,20 @@ const Index = () => {
                     </p>
                   </div>
 
+                  <Button asChild variant="outline" className="w-full font-semibold">
                   <a
                     href="https://maps.app.goo.gl/F1ERUhZwjeqQbfMx6?g_st=ac"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border/60 bg-card/60 hover:border-primary/50 px-6 py-3 font-display font-semibold text-sm text-foreground transition-all duration-300 shadow-glow-soft"
                   >
                     <Navigation className="h-4 w-4 text-primary" />
                     <span>Get Directions</span>
                   </a>
+                  </Button>
                 </div>
 
                 <div className="lg:col-span-2">
-                  <div className="w-full h-[380px] md:h-[420px] rounded-2xl border border-primary/20 overflow-hidden relative shadow-glow-soft">
+                  <div className="w-full h-[380px] md:h-[420px] rounded-lg border border-border overflow-hidden relative shadow-glow-soft">
                     <iframe
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1000!2d85.5422!3d27.6217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb09a7f1e6d4b7%3A0x5e2e7b0e9b1e1e1e!2sDH-KUSMS%20Medico%20Essentials!5e0!3m2!1sen!2snp!4v1700000000000!5m2!1sen!2snp"
                       width="100%"
