@@ -10,4 +10,4 @@
 - [x] Point every order/WhatsApp link to +977 9823409169.
 - [x] Rename the scrubs category to Premium KnyaMed Scrubs everywhere it appears.
 - [x] Drop the Choose Type step (V-neck only) and limit sizes to S/M/L/XL.
-- [ ] Verify the scrubs flow end to end in the preview: gender, color, size, cart, WhatsApp link.
+- [x] Verify the scrubs flow end to end in the preview: gender, color, size, cart, WhatsApp link.
