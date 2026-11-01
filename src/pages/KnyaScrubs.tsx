@@ -7,11 +7,11 @@ import { Button } from "@/components/ui/button";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "@/hooks/use-toast";
 import {
-  scrubTypes,
   scrubGenders,
   scrubColorsByGender,
   scrubSizes,
   SCRUB_BASE_PRICE,
+  SCRUB_STYLE,
   type ScrubGender,
 } from "@/data/scrubs";
 import knyaLogo from "@/assets/brand/knya-med-original.webp";
@@ -19,13 +19,12 @@ import knyaLogo from "@/assets/brand/knya-med-original.webp";
 const KnyaScrubs = () => {
   const { addItem, setIsCartOpen } = useCart();
   const [selectedGender, setSelectedGender] = useState<ScrubGender | null>(null);
-  const [selectedType, setSelectedType] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
   const availableColors = selectedGender ? scrubColorsByGender[selectedGender] : [];
   const selectedColorData = availableColors.find((color) => color.name === selectedColor);
-  const canAdd = Boolean(selectedGender && selectedType && selectedColor && selectedSize);
+  const canAdd = Boolean(selectedGender && selectedColor && selectedSize);
 
   const handleGenderChange = (gender: ScrubGender) => {
     setSelectedGender(gender);
@@ -33,32 +32,31 @@ const KnyaScrubs = () => {
   };
 
   const handleAddToCart = () => {
-    if (!selectedGender || !selectedType || !selectedColor || !selectedSize) return;
-    const id = `scrub-${selectedGender}-${selectedType}-${selectedColor}-${selectedSize}`
+    if (!selectedGender || !selectedColor || !selectedSize) return;
+    const id = `scrub-${selectedGender}-${selectedColor}-${selectedSize}`
       .toLowerCase()
       .replace(/\s+/g, "-");
 
     addItem({
       id,
-      name: "KNYA Scrub",
+      name: "Premium KnyaMed Scrub",
       price: SCRUB_BASE_PRICE,
       category: "scrubs",
       gender: selectedGender,
-      scrubType: selectedType,
       color: selectedColor,
       size: selectedSize,
     });
 
     toast({
       title: "Added to cart",
-      description: `${selectedGender} · ${selectedType} · ${selectedColor} · Size ${selectedSize}`,
+      description: `${selectedGender} · ${selectedColor} · Size ${selectedSize}`,
     });
     setIsCartOpen(true);
   };
 
   return (
     <div className="min-h-screen bg-background mesh-bg">
-      <SEO title="KNYA Premium Scrubs — DH-KUSMS Medico Essentials" description="Comfortable KNYA scrubs for clinical postings — choose your style, color, and size. Delivered across Nepal from DH-KUSMS Medico Essentials." path="/scrubs" />
+      <SEO title="Premium KnyaMed Scrubs — DH-KUSMS Medico Essentials" description="Comfortable KnyaMed V-neck scrubs for clinical postings — choose your gender, color, and size. Delivered across Nepal from DH-KUSMS Medico Essentials." path="/scrubs" />
       <Header />
 
       <main>
@@ -67,7 +65,7 @@ const KnyaScrubs = () => {
 
           <div className="container relative z-10 mx-auto px-4 lg:px-6">
             <div className="max-w-3xl">
-              <img src={knyaLogo} alt="KNYA" className="mb-7 h-12 w-auto rounded border border-border/50" width={250} height={80} />
+              <img src={knyaLogo} alt="KnyaMed" className="mb-7 h-12 w-auto rounded border border-border/50" width={250} height={80} />
               <div className="mb-5 inline-flex items-center gap-2 rounded-full glass border border-primary/30 px-4 py-1.5">
                 <Shirt className="h-4 w-4 text-accent" />
                 <span className="text-xs font-display font-bold tracking-[0.2em] uppercase text-accent">
@@ -75,10 +73,10 @@ const KnyaScrubs = () => {
                 </span>
               </div>
               <h1 className="font-display text-4xl md:text-6xl font-black tracking-tighter text-foreground">
-                Premium KNYA Scrubs
+                Premium KnyaMed Scrubs
               </h1>
               <p className="mt-5 text-lg text-muted-foreground max-w-2xl">
-                Comfort for those long clinical shifts.
+                Comfort for those long clinical shifts. Classic V-neck cut, made to move with you.
               </p>
             </div>
           </div>
@@ -93,7 +91,7 @@ const KnyaScrubs = () => {
                 <div className="sticky top-24 overflow-hidden rounded-lg border border-border/40 glass">
                   <div className="relative aspect-[7/8] bg-muted/30">
                     {selectedColorData ? (
-                      <img src={selectedColorData.image} alt={`${selectedGender} ${selectedColorData.name} KNYA scrubs`} className="h-full w-full object-cover object-top" width={896} height={1152} />
+                      <img src={selectedColorData.image} alt={`${selectedGender} ${selectedColorData.name} KnyaMed scrubs`} className="h-full w-full object-cover object-top" width={896} height={1152} />
                     ) : (
                       <div className="flex h-full flex-col items-center justify-center px-8 text-center">
                         <Shirt className="h-28 w-28 text-muted-foreground/50" strokeWidth={1.2} />
@@ -103,10 +101,14 @@ const KnyaScrubs = () => {
                   </div>
                   <div className="border-t border-border/40 p-5 text-center">
                     <p className="font-display text-xl font-bold text-foreground">
-                      KNYA Scrub
+                      Premium KnyaMed Scrub
                     </p>
                     <p className="text-sm text-muted-foreground mt-1">
-                      {[selectedGender, selectedType, selectedColor].filter(Boolean).join(" · ") || "Build your set"}
+                      {[selectedGender, selectedColor, selectedSize && `Size ${selectedSize}`].filter(Boolean).join(" · ") || "Build your set"}
+                    </p>
+                    <p className="mt-3 inline-flex items-center gap-2 rounded-full border border-border/50 bg-card/40 px-3 py-1 text-xs font-medium text-muted-foreground">
+                      <Check className="h-3 w-3 text-accent" />
+                      {SCRUB_STYLE}
                     </p>
                   </div>
                 </div>
@@ -131,52 +133,11 @@ const KnyaScrubs = () => {
                   </div>
                 </div>
 
-                {/* Type */}
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <h2 className="font-display text-xl font-bold text-foreground tracking-tight">
-                       2. Choose Type
-                    </h2>
-                    {selectedType && (
-                      <span className="text-xs text-accent font-medium">
-                        {selectedType}
-                      </span>
-                    )}
-                  </div>
-                  <div className="grid sm:grid-cols-3 gap-3">
-                    {scrubTypes.map((type) => {
-                      const active = selectedType === type;
-                      return (
-                        <Button
-                          type="button"
-                          variant="outline"
-                          key={type}
-                          onClick={() => setSelectedType(type)}
-                          className={`relative h-auto justify-start rounded-lg border p-4 text-left transition-all duration-300 ${
-                            active
-                              ? "border-primary bg-primary/10 shadow-glow-soft"
-                              : "border-border/50 bg-card/40 hover:border-primary/40 hover:bg-card/60"
-                          }`}
-                        >
-                          {active && (
-                            <div className="absolute top-3 right-3 h-5 w-5 rounded-full bg-primary flex items-center justify-center">
-                              <Check className="h-3 w-3 text-primary-foreground" />
-                            </div>
-                          )}
-                          <p className="font-display font-bold text-sm text-foreground">
-                            {type}
-                          </p>
-                        </Button>
-                      );
-                    })}
-                  </div>
-                </div>
-
                 {/* Color */}
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <h2 className="font-display text-xl font-bold text-foreground tracking-tight">
-                       3. Choose Color
+                      2. Choose Color
                     </h2>
                     {selectedColor && (
                       <span className="text-xs text-accent font-medium">
@@ -216,7 +177,7 @@ const KnyaScrubs = () => {
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <h2 className="font-display text-xl font-bold text-foreground tracking-tight">
-                       4. Choose Size
+                      3. Choose Size
                     </h2>
                     {selectedSize && (
                       <span className="text-xs text-accent font-medium">
@@ -235,7 +196,7 @@ const KnyaScrubs = () => {
                           onClick={() => setSelectedSize(size)}
                           className={`min-w-[56px] rounded-full border px-5 py-2.5 font-display font-bold text-sm transition-all duration-300 ${
                             active
-                               ? "border-primary bg-primary text-primary-foreground shadow-glow-soft"
+                              ? "border-primary bg-primary text-primary-foreground shadow-glow-soft"
                               : "border-border/60 bg-card/40 text-foreground hover:border-primary/50"
                           }`}
                         >
@@ -260,7 +221,7 @@ const KnyaScrubs = () => {
                     onClick={handleAddToCart}
                     disabled={!canAdd}
                     size="lg"
-                     className="gap-2 bg-primary hover:opacity-90 text-primary-foreground disabled:opacity-40 disabled:cursor-not-allowed"
+                    className="gap-2 bg-primary hover:opacity-90 text-primary-foreground disabled:opacity-40 disabled:cursor-not-allowed"
                   >
                     <ShoppingCart className="h-5 w-5" />
                     {canAdd ? "Add to Cart" : "Select all options"}
