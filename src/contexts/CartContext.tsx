@@ -8,7 +8,6 @@ export interface CartItem {
   category: "fastrack" | "coaching" | "secondhand" | "instrument" | "scrubs";
   coachingName?: string;
   color?: string;
-  scrubType?: string;
   size?: string;
   gender?: "Men's" | "Women's";
 }

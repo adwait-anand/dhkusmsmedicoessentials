@@ -63,8 +63,8 @@ const Index = () => {
                 index={3}
               />
               <HomeOptionCard
-                title="Premium Scrubs"
-                description="Comfortable KNYA scrubs for clinical postings"
+                title="Premium KnyaMed Scrubs"
+                description="Comfortable KnyaMed scrubs for clinical postings"
                 icon={Shirt}
                 to="/scrubs"
                 gradient="from-violet-500 to-fuchsia-600"

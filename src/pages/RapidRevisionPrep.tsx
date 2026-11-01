@@ -14,7 +14,7 @@ import {
   getDiscountedTotal,
 } from "@/data/rapidRevision";
 
-const WHATSAPP_NUMBER = "917023889974";
+const WHATSAPP_NUMBER = "9779823409169";
 const FULL_SET_CART_ID = "rr-full-set-bundle";
 
 const YEAR_COLORS: Record<string, string> = {

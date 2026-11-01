@@ -10,7 +10,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 
-const WHATSAPP_NUMBER = "917023889974";
+const WHATSAPP_NUMBER = "9779823409169";
 
 const CartSheet = () => {
   const {
@@ -32,7 +32,7 @@ const CartSheet = () => {
       coaching: "📝 Handwritten Notes",
       secondhand: "📖 Second Hand Books",
       instrument: "🩺 Medical Instruments",
-      scrubs: "👕 Premium Scrubs",
+      scrubs: "👕 Premium KnyaMed Scrubs",
     };
 
     // Group items by category
@@ -51,7 +51,7 @@ const CartSheet = () => {
         const priceText = item.price ? ` - NRS ${(item.price * item.quantity).toLocaleString()}` : "";
         const coachingText = item.coachingName ? ` (${item.coachingName})` : "";
         if (item.category === "scrubs") {
-          const variants = [item.gender, item.scrubType, item.color, item.size ? `Size: ${item.size}` : null]
+          const variants = [item.gender, item.color, item.size ? `Size: ${item.size}` : null]
             .filter(Boolean)
             .join(", ");
           message += `${index + 1}. ${item.name}${variants ? ` (${variants})` : ""} x${item.quantity}${priceText}\n`;
@@ -112,7 +112,7 @@ const CartSheet = () => {
                       )}
                       {item.category === "scrubs" && (
                         <p className="text-xs text-muted-foreground">
-                          {[item.gender, item.scrubType, item.color, item.size && `Size: ${item.size}`]
+                          {[item.gender, item.color, item.size && `Size: ${item.size}`]
                             .filter(Boolean)
                             .join(" · ")}
                         </p>

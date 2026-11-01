@@ -100,7 +100,7 @@ const CoachingNotes = () => {
   const handleFullSetOrder = () => {
     if (!fullSetInfo) return;
     const message = `Hi I want Full Set ${fullSetInfo.label} Net Price NRS ${fullSetInfo.price}`;
-    window.open(`https://wa.me/917023889974?text=${encodeURIComponent(message)}`, "_blank");
+    window.open(`https://wa.me/9779823409169?text=${encodeURIComponent(message)}`, "_blank");
   };
 
   if (!loading && notes.length === 0) {

@@ -19,13 +19,9 @@ export interface ScrubColor {
   image: string;
 }
 
-export const scrubTypes: string[] = [
-  "Classic V-Neck",
-  "Jogger Style",
-  "Multi-Pocket Premium",
-];
-
 export const scrubGenders: ScrubGender[] = ["Men's", "Women's"];
+
+export const SCRUB_STYLE = "Classic V-Neck";
 
 export const scrubColorsByGender: Record<ScrubGender, ScrubColor[]> = {
   "Men's": [
@@ -46,6 +42,6 @@ export const scrubColorsByGender: Record<ScrubGender, ScrubColor[]> = {
   ],
 };
 
-export const scrubSizes: string[] = ["XS", "S", "M", "L", "XL", "XXL"];
+export const scrubSizes: string[] = ["S", "M", "L", "XL"];
 
 export const SCRUB_BASE_PRICE = 2500;
