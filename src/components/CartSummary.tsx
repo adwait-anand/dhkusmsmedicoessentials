@@ -32,7 +32,7 @@ ${discount > 0 ? `🎉 *Bundle Discount (10%):* -NRS ${discount.toLocaleString()
 
 Please confirm my order!`;
 
-    const phoneNumber = "917023889974";
+    const phoneNumber = "9779823409169";
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
   };

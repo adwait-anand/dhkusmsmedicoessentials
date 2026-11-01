@@ -7,7 +7,7 @@ import notesBanner from "@/assets/home/notes-banner.png";
 import booksBanner from "@/assets/home/books-banner.png";
 
 const slides = [
-  { image: scrubsBanner, alt: "Medical professionals wearing premium KNYA scrubs", headline: "Ready for every round", to: "/scrubs" },
+  { image: scrubsBanner, alt: "Medical professionals wearing premium KnyaMed scrubs", headline: "Ready for every round", to: "/scrubs" },
   { image: notesBanner, alt: "Color printed PrepLadder and Marrow medical notes", headline: "Notes built for better results", to: "/handwritten-notes" },
   { image: booksBanner, alt: "FastTrack and standard MBBS medical books", headline: "Everything for your next exam", to: "/fastrack-books" },
 ];

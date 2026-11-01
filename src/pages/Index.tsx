@@ -9,7 +9,7 @@ import { NotebookPen, BookOpen, BookMarked, Stethoscope, Shirt, MapPin, Clock, P
 const Index = () => {
   return (
     <div className="min-h-screen bg-background mesh-bg">
-      <SEO title="DH-KUSMS Medico Essentials — Notes, Books & Instruments" description="Premium handwritten notes, MBBS FastTrack books, KNYA scrubs, and medical instruments at DH-KUSMS Medico Essentials in Dhulikhel, Nepal." path="/" />
+      <SEO title="DH-KUSMS Medico Essentials — Notes, Books & Instruments" description="Premium handwritten notes, MBBS FastTrack books, KnyaMed scrubs, and medical instruments at DH-KUSMS Medico Essentials in Dhulikhel, Nepal." path="/" />
       <Header />
 
       <main>
@@ -63,8 +63,8 @@ const Index = () => {
                 index={3}
               />
               <HomeOptionCard
-                title="Premium Scrubs"
-                description="Comfortable KNYA scrubs for clinical postings"
+                title="Premium KnyaMed Scrubs"
+                description="Comfortable KnyaMed scrubs for clinical postings"
                 icon={Shirt}
                 to="/scrubs"
                 gradient="from-violet-500 to-fuchsia-600"

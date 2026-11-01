@@ -17,7 +17,7 @@ const navigation = [
   { label: "FastTrack Books", to: "/fastrack-books" },
   { label: "Second Hand Books", to: "/second-hand-books" },
   { label: "Medical Instruments", to: "/medical-instruments" },
-  { label: "Premium Scrubs", to: "/scrubs" },
+  { label: "Premium KnyaMed Scrubs", to: "/scrubs" },
 ];
 
 const Header = () => {
